@@ -25,6 +25,7 @@ public class TextFileReader
         }
         catch (FileNotFoundException fileNotFoundException)
         {
+            System.out.println("Fail to open the file.");
             bOk = false;
             reader = null;
         }
