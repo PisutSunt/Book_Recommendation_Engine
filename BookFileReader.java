@@ -6,7 +6,7 @@ public class BookFileReader extends TextFileReader
     private boolean checkBookCommand(String line)
     {
         String fields[] = line.split(";");
-        if (fields.length == 8)
+        if (fields.length == 9)
         {
             try
             {
@@ -14,6 +14,20 @@ public class BookFileReader extends TextFileReader
                 Float.parseFloat(fields[4]);
                 Integer.parseInt(fields[5]);
                 Integer.parseInt(fields[7]);
+            }
+            catch (NumberFormatException numberFormatException)
+            {
+                return false;
+            }
+            return true;
+        }
+        else if (fields.length == 10)
+        {
+            try
+            {
+                Integer.parseInt(fields[3]);
+                Float.parseFloat(fields[4]);
+                Integer.parseInt(fields[6]);
             }
             catch (NumberFormatException numberFormatException)
             {
