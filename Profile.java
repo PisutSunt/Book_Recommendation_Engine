@@ -11,7 +11,10 @@ public class Profile
 
     public Profile(String userName, String email, String password, ArrayList<String> genre)
     {
-
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        interestedGenre = genre;
     }
 
     public String getName()
@@ -32,6 +35,11 @@ public class Profile
     public ArrayList<String> getGenre()
     {
         return interestedGenre;
+    }
+
+    public Cart getCart()
+    {
+        return cart;
     }
 
     public ArrayList<Bill> getBill()
