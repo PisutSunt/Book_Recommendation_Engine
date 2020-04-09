@@ -40,4 +40,54 @@ public class Book
         keywords = title + " " + author + " " + genre + " " +
                     bookAbstract + " " + ISBN;
     }
+
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public String getAuthor()
+    {
+        return author;
+    }
+
+    public String getGenre()
+    {
+        return genre;
+    }
+
+    public int getLengthInPages()
+    {
+        return lengthInPages;
+    }
+
+    public String getKeywords()
+    {
+        return keywords;
+    }
+
+    public float getPrice()
+    {
+        return price;
+    }
+
+    public int getTotalBought()
+    {
+        return totalBought;
+    }
+
+    public String getAbtract()
+    {
+        return bookAbstract;
+    }
+
+    public int getRemaining()
+    {
+        return remaining;
+    }
+
+    public String getISBN()
+    {
+        return ISBN;
+    }
 }
