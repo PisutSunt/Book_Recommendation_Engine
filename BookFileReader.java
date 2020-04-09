@@ -21,7 +21,7 @@ public class BookFileReader extends TextFileReader
             }
             return true;
         }
-        else if (fields.length == 10)
+        else if (fields.length == 8)
         {
             try
             {
@@ -52,7 +52,17 @@ public class BookFileReader extends TextFileReader
                 {
                     if (checkBookCommand(line))
                     {
-
+                        String fields[] = line.split(";");
+                        // with totalBought
+                        if (fields.length == 9)
+                            newBook = new Book(fields[0], fields[1], fields[2], Integer.parseInt(fields[3]), 
+                                            Float.parseFloat(fields[4]), Integer.parseInt(fields[5]), 
+                                            fields[6], Integer.parseInt(fields[7]), fields[8]);
+                        // without totalBought
+                        else
+                            newBook = new Book(fields[0], fields[1], fields[2], Integer.parseInt(fields[3]), 
+                                            Float.parseFloat(fields[4]), fields[5], 
+                                            Integer.parseInt(fields[6]), fields[7]);
                     }
                     else
                     {
