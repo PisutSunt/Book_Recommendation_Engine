@@ -6,8 +6,19 @@ public class BookFileReader extends TextFileReader
     private boolean checkBookCommand(String line)
     {
         String fields[] = line.split(";");
-        if (fields.length == 8){
-            // ยังไม่เช็ค attribute อื่นๆ
+        if (fields.length == 8)
+        {
+            try
+            {
+                Integer.parseInt(fields[3]);
+                Float.parseFloat(fields[4]);
+                Integer.parseInt(fields[5]);
+                Integer.parseInt(fields[7]);
+            }
+            catch (NumberFormatException numberFormatException)
+            {
+                return false;
+            }
             return true;
         }
         return false;
