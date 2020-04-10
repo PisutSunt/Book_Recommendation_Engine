@@ -44,6 +44,6 @@ public class Profile
 
     public ArrayList<Bill> getBill()
     {
-        
+        return null;
     }
 }
