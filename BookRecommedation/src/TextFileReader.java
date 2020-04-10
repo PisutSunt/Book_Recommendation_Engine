@@ -5,63 +5,63 @@ import java.io.IOException;
 
 public class TextFileReader
 {
-    private BufferedReader reader = null;
+	private BufferedReader reader = null;
 
-    public boolean openFile(String filename)
-    {
-        boolean bOk = true;
-        try
-        {
-            if (reader != null)
-                reader.close();
-        }
-        catch (IOException ioException)
-        {
-            reader = null;
-        }
-        try
-        {
-            reader = new BufferedReader(new FileReader(filename));
-        }
-        catch (FileNotFoundException fileNotFoundException)
-        {
-            System.out.println("Fail to open the file.");
-            bOk = false;
-            reader = null;
-        }
-        return bOk;
-    }
+	public boolean openFile(String filename)
+	{
+		boolean bOk = true;
+		try
+		{
+			if (reader != null)
+				reader.close();
+		}
+		catch (IOException ioException)
+		{
+			reader = null;
+		}
+		try
+		{
+			reader = new BufferedReader(new FileReader(filename));
+		}
+		catch (FileNotFoundException fileNotFoundException)
+		{
+			System.out.println("Fail to open the file.");
+			bOk = false;
+			reader = null;
+		}
+		return bOk;
+	}
 
-    public String getNextLine()
-    {
-        String lineRead = null;
-        try
-        {
-            if (reader != null)
-            {
-                lineRead = reader.readLine();
-                if (lineRead == null)
-                {
-                    reader.close();
-                }
-            }
-        }
-        catch (IOException ioException)
-        {
-            lineRead = null;
-        }
-        return lineRead;
-    }
+	public String getNextLine()
+	{
+		String lineRead = null;
+		try
+		{
+			if (reader != null)
+			{
+				lineRead = reader.readLine();
+				if (lineRead == null)
+				{
+					reader.close();
+				}
+			}
+		}
+		catch (IOException ioException)
+		{
+			lineRead = null;
+		}
+		return lineRead;
+	}
 
-    public void closeFile()
-    {
-        try
-        {
-            reader.close();
-        }
-        catch (IOException ioException)
-        {
-            System.out.println("Fail to close file");
-        }
-    }
+	public void closeFile()
+	{
+		try
+		{
+			reader.close();
+		}
+		catch (IOException ioException)
+		{
+			System.out.println("Fail to close file");
+		}
+	}
 }

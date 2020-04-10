@@ -1,4 +1,5 @@
 
-public class BillCollection {
+public class BillCollection
+{
 
 }
