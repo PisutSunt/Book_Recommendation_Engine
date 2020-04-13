@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class UILogin implements ActionListener
+public class LoginPage implements ActionListener
 {
 	private static JLabel userLabel;
 	private static JTextField userTextField;
@@ -42,7 +42,7 @@ public class UILogin implements ActionListener
 		
 		button = new JButton("Login");
 		button.setBounds(120, 100, 80, 25);
-		button.addActionListener(new UILogin());
+		button.addActionListener(new LoginPage());
 		panel.add(button);
 		
 		success = new JLabel("");
