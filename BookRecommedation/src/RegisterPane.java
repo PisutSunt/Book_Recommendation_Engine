@@ -1,7 +1,6 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,7 +16,7 @@ public class RegisterPane implements ActionListener
 	private static JTextField userTextField;
 	private static JPasswordField pwTextField;
 	private static JButton buttonReg;
-	private static String genreList[] = {"Adventure", "Romance", "History", "Biography", "Comics", "Mystery"};
+	private static String genreList[] = {"", "Adventure", "Romance", "History", "Biography", "Comics", "Mystery"};
 	private static DefaultComboBoxModel<String> genreBox = new DefaultComboBoxModel<String>(genreList);
 	private static JComboBox<String> genre1 = new JComboBox<String>(genreBox);
 	private static JComboBox<String> genre2 = new JComboBox<String>(genreBox);
