@@ -2,7 +2,9 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -13,8 +15,6 @@ public class LoginPane implements ActionListener
 	private static JPanel panelLogin;
 	private static JLabel userLabel;
 	private static JLabel pwLabel;
-	private static JLabel successLabel;
-	private static JLabel failedLabel;
 	private static JTextField userTextField;
 	private static JPasswordField pwTextField;
 	private static JButton buttonLogin;
@@ -46,14 +46,7 @@ public class LoginPane implements ActionListener
 		buttonLogin.setBounds(120, 90, 80, 25);
 		buttonLogin.addActionListener(this);
 		panelLogin.add(buttonLogin);
-			
-		successLabel = new JLabel("");
-		successLabel.setBounds(115, 140, 300, 25);
-		panelLogin.add(successLabel);
-		
-		failedLabel = new JLabel("");
-		failedLabel.setBounds(80, 140, 300, 25);
-		panelLogin.add(failedLabel);
+
 	}
 
 	
@@ -62,33 +55,13 @@ public class LoginPane implements ActionListener
 		String user = userTextField.getText();
 		String password = pwTextField.getText();
 		
-		if(user.equals(""))
+		if(user.equals("admin") && password.equals("root"))
 		{
-			successLabel.setText("");
-			failedLabel.setText("");
-			failedLabel.setText("Please fill Username! ");
-			failedLabel.setForeground(Color.RED);
-		}
-		else if(password.equals(""))
-		{
-			successLabel.setText("");
-			failedLabel.setText("");
-			failedLabel.setText("Please fill Password! ");
-			failedLabel.setForeground(Color.RED);
-		}
-		else if(user.equals("admin") && password.equals("root"))
-		{
-			successLabel.setText("");
-			failedLabel.setText("");
-			successLabel.setText("Login successful!");
-			successLabel.setForeground(Color.GREEN);
+			JOptionPane.showMessageDialog(new JFrame(), "Login successful!");
 		}
 		else
 		{
-			successLabel.setText("");
-			failedLabel.setText("");
-			failedLabel.setText("Username or Password incorrect");
-			failedLabel.setForeground(Color.RED);
+			JOptionPane.showMessageDialog(new JFrame(), "Username or Password incorrect!");
 		}
 	}
 	
