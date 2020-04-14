@@ -20,8 +20,8 @@ public class WelcomePage
 		LoginPane loginPane = new LoginPane();
 		RegisterPane regPane = new RegisterPane();
 		
-		JLabel regLabel = new JLabel("<html><a href=''>Register</a></html>");;
-		regLabel.setBounds(135, 120, 50, 25);
+		JLabel regLabel = new JLabel("<html><a href=''>Create&nbsp;account?</a></html>");;
+		regLabel.setBounds(115, 120, 100, 25);
 		regLabel.addMouseListener(new MouseAdapter()
 				{
 					public void mouseClicked(MouseEvent me)

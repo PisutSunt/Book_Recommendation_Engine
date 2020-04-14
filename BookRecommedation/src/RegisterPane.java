@@ -47,7 +47,7 @@ public class RegisterPane implements ActionListener
 		pwTextField.setBounds(100, 80, 165, 25);
 		panelReg.add(pwTextField);
 		
-		buttonReg = new JButton("Register");
+		buttonReg = new JButton("Sign Up");
 		buttonReg.setBounds(120, 120, 100, 25);
 		buttonReg.addActionListener(this);
 		panelReg.add(buttonReg);
