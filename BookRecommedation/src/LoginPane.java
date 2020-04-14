@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -13,8 +12,6 @@ public class LoginPane implements ActionListener
 {
 	
 	private static JPanel panelLogin;
-	private static JLabel userLabel;
-	private static JLabel pwLabel;
 	private static JTextField userTextField;
 	private static JPasswordField pwTextField;
 	private static JButton buttonLogin;
@@ -26,7 +23,7 @@ public class LoginPane implements ActionListener
 		
 		panelLogin.setLayout(null);
 		
-		userLabel = new JLabel("Username");
+		JLabel userLabel = new JLabel("Username");
 		userLabel.setBounds(30, 20 , 80, 25);
 		panelLogin.add(userLabel);
 		
@@ -34,7 +31,7 @@ public class LoginPane implements ActionListener
 		userTextField.setBounds(100, 20, 165, 25);
 		panelLogin.add(userTextField);
 		
-		pwLabel = new JLabel("Password");
+		JLabel pwLabel = new JLabel("Password");
 		pwLabel.setBounds(30, 50 , 80, 25);
 		panelLogin.add(pwLabel);
 		
@@ -55,6 +52,7 @@ public class LoginPane implements ActionListener
 		String user = userTextField.getText();
 		String password = pwTextField.getText();
 		
+		//Check username and password here!
 		if(user.equals("admin") && password.equals("root"))
 		{
 			JOptionPane.showMessageDialog(new JFrame(), "Login successful!");
