@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -19,22 +20,25 @@ public class LoginPage implements ActionListener
 	private static JButton buttonReg;
 	private static JPanel panelLogin;
 	private static JPanel panelReg;
+	private static JFrame frame;
+	private static Container pane;
 	
 	public LoginPage()
 	{
-		JFrame frame = new JFrame("Login page");
+		frame = new JFrame("Welcome");
 		frame.setSize(350, 210);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 		
 		createPanelLogin();
 		createPanelReg();
-
-		frame.add(panelLogin, BorderLayout.CENTER);
-//		frame.add(panelReg, BorderLayout.CENTER);
 		
-		frame.setVisible(true);
+		pane = frame.getContentPane();
+		pane.add(panelLogin, BorderLayout.CENTER);
+		pane.add(panelReg, BorderLayout.PAGE_END);
+		
 	}
 
 	private void createPanelLogin()
@@ -91,26 +95,26 @@ public class LoginPage implements ActionListener
 		emailTextField.setBounds(100, 20, 165, 25);
 		panelReg.add(emailTextField);
 		
-		userLabel = new JLabel("Username");
-		userLabel.setBounds(30, 50 , 80, 25);
-		panelReg.add(userLabel);
-		
-		userTextField = new JTextField();
-		userTextField.setBounds(100, 50, 165, 25);
-		panelReg.add(userTextField);
-		
-		pwLabel = new JLabel("Password");
-		pwLabel.setBounds(30, 80 , 80, 25);
-		panelReg.add(pwLabel);
-		
-		pwTextField = new JPasswordField();
-		pwTextField.setBounds(100, 80, 165, 25);
-		panelReg.add(pwTextField);
-		
-		buttonReg = new JButton("Register");
-		buttonReg.setBounds(120, 120, 100, 25);
-		buttonReg.addActionListener(this);
-		panelReg.add(buttonReg);
+//		userLabel = new JLabel("Username");
+//		userLabel.setBounds(30, 50 , 80, 25);
+//		panelReg.add(userLabel);
+//		
+//		userTextField = new JTextField();
+//		userTextField.setBounds(100, 50, 165, 25);
+//		panelReg.add(userTextField);
+//		
+//		pwLabel = new JLabel("Password");
+//		pwLabel.setBounds(30, 80 , 80, 25);
+//		panelReg.add(pwLabel);
+//		
+//		pwTextField = new JPasswordField();
+//		pwTextField.setBounds(100, 80, 165, 25);
+//		panelReg.add(pwTextField);
+//		
+//		buttonReg = new JButton("Register");
+//		buttonReg.setBounds(120, 120, 100, 25);
+//		buttonReg.addActionListener(this);
+//		panelReg.add(buttonReg);
 		
 	}
 	
