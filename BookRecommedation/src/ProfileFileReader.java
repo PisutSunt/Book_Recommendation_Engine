@@ -7,7 +7,7 @@ public class ProfileFileReader extends TextFileReader
 	private boolean checkProfileCommand(String line)
 	{
 		String fields[] = line.split(";");
-		if (fields.length >= 4 && fields.length <= 8)
+		if (fields.length == 8)
 		{
 			return true;
 		}
