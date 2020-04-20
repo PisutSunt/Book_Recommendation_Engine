@@ -1,0 +1,2 @@
+id; username; no of item; ISBN of book; no of book; receiver; shipping address; milliseconds;
+0;peterpisut;1;A00001;2;Pisut S.;KMUTT, BKK, TH; 80000000;
