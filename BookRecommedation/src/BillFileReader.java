@@ -42,7 +42,8 @@ public class BillFileReader extends TextFileReader
                     String fields[] = line.split(";");
                     // search Profile and Books to implement Bill constructor
                 }
-            }
+            } while (newBill == null && line != null);
         }
+        return newBill;
     }
 }
