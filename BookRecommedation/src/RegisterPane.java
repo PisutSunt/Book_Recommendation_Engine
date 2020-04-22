@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,13 +19,13 @@ public class RegisterPane implements ActionListener
 	private static JTextField userTextField;
 	private static JPasswordField pwTextField;
 	private static JButton buttonReg;
-	private static String genreList[] = {"", "Adventure", "Romance", "History", "Biography", "Comics", "Mystery"};
-	private static DefaultComboBoxModel<String> genreBox = new DefaultComboBoxModel<String>(genreList);
-	private static JComboBox<String> genre1 = new JComboBox<String>(genreBox);
-	private static JComboBox<String> genre2 = new JComboBox<String>(genreBox);
-	private static JComboBox<String> genre3 = new JComboBox<String>(genreBox);
-	private static JComboBox<String> genre4 = new JComboBox<String>(genreBox);
-	private static JComboBox<String> genre5 = new JComboBox<String>(genreBox);
+	private static List<String> genreList = Arrays.asList("", "Adventure", "Romance", "History", "Biography", "Comics", "Mystery");
+//	private static DefaultComboBoxModel<String> genreBox = new DefaultComboBoxModel<String>(genreList);
+	private static JComboBox genre1 = new JComboBox(genreList.toArray());
+	private static JComboBox genre2 = new JComboBox(genreList.toArray());
+//	private static JComboBox<String> genre3 = new JComboBox<String>(genreBox);
+//	private static JComboBox<String> genre4 = new JComboBox<String>(genreBox);
+//	private static JComboBox<String> genre5 = new JComboBox<String>(genreBox);
 	//private static ArrayList<genre>; //for keep all chosen interested genre
 	public RegisterPane()
 	{
@@ -69,10 +72,18 @@ public class RegisterPane implements ActionListener
 		
 		genre1.setBounds(100, 180, 165, 25);
 		panelReg.add(genre1);
-
+		
 		JLabel secondGenre = new JLabel("2nd genre");
 		secondGenre.setBounds(30, 210 , 60, 25);
 		panelReg.add(secondGenre);
+		
+		genre2 = new JComboBox((genreList.stream()
+										.filter(genreList -> 
+													!(
+														genre1.getSelectedItem().equals(genreList))
+													)
+												)
+										.collect(Collectors.toList()));
 		
 		genre2.setBounds(100, 210, 165, 25);
 		panelReg.add(genre2);
@@ -81,22 +92,22 @@ public class RegisterPane implements ActionListener
 		thirdGenre.setBounds(30, 240 , 60, 25);
 		panelReg.add(thirdGenre);
 		
-		genre3.setBounds(100, 240, 165, 25);
-		panelReg.add(genre3);
+//		genre3.setBounds(100, 240, 165, 25);
+//		panelReg.add(genre3);
 		
 		JLabel fourthGenre = new JLabel("4th genre");
 		fourthGenre.setBounds(30, 270 , 60, 25);
 		panelReg.add(fourthGenre);
 		
-		genre4.setBounds(100, 270, 165, 25);
-		panelReg.add(genre4);
+//		genre4.setBounds(100, 270, 165, 25);
+//		panelReg.add(genre4);
 		
 		JLabel fifthGenre = new JLabel("5th genre");
 		fifthGenre.setBounds(30, 300 , 150, 25);
 		panelReg.add(fifthGenre);
 		
-		genre5.setBounds(100, 300, 165, 25);
-		panelReg.add(genre5);
+//		genre5.setBounds(100, 300, 165, 25);
+//		panelReg.add(genre5);
 		
 		buttonReg = new JButton("Sign Up");
 		buttonReg.setBounds(120, 340, 100, 25);
