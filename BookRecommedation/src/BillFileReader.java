@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import javafx.util.Pair;
 
 public class BillFileReader extends TextFileReader
 {
@@ -39,8 +41,29 @@ public class BillFileReader extends TextFileReader
                 line = getNextLine();
                 if (line != null)
                 {
-                    String fields[] = line.split(";");
-                    // search Profile and Books to implement Bill constructor
+                    if (checkBillCommand(line))
+                    {
+                        String fields[] = line.split(";");
+                        int billNo = Integer.parseInt(fields[0]);
+                        Profile buyer = ProfileCollection.getProfile(fields[1]);
+                        int noOfItem = Integer.parseInt(fields[2]);
+                        ArrayList<Pair<Book, Integer>> boughtBooks = new ArrayList<>();
+                        float totalPrice = 0;
+                        for (int i = 0; i < noOfItem; i++)
+                        {
+                            Book tempBook = BookCollection.getBook(fields[i + 3]);
+                            int numberOfBook = Integer.parseInt(fields[i + 4]);
+                            boughtBooks.add(new Pair<Book,Integer>(tempBook, numberOfBook));
+                            totalPrice += tempBook.getPrice() * numberOfBook;
+                        }
+                        long millisec = Long.parseLong(fields[fields.length - 1]);
+                        newBill = new Bill(billNo, buyer, boughtBooks, fields[fields.length - 3], 
+                                            fields[fields.length - 2], totalPrice, millisec);
+                    }
+                    else
+					{
+						System.out.println("Invalid command");
+					}
                 }
             } while (newBill == null && line != null);
         }
