@@ -42,7 +42,7 @@ public class BookFileReader extends TextFileReader
 	{
 		Book newBook = null;
 		String line;
-		Boolean bOk = (openFile(filename));
+		Boolean bOk = openFile(filename);
 		if (bOk)
 		{
 			do
