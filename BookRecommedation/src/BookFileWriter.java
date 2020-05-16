@@ -1,3 +1,4 @@
+import java.util.Enumeration;
 
 public class BookFileWriter extends TextFileWriter
 {
@@ -9,14 +10,18 @@ public class BookFileWriter extends TextFileWriter
         
     }
 
-    public boolean writeBook(BookCollection books)
+    public boolean writeBook()
     {
         boolean success = true;
         boolean bOk = creatFile(filename);
-        String line;
+        String line = null;
         if (bOk)
         {
-            // extract the book and write to file
+            for (Enumeration<Book> i = BookCollection.bookCollection.elements(); i.hasMoreElements();)
+            {
+                Book tempBook = i.nextElement();
+                tempBook.getTitle()
+            }
         }
         return success;
     }
