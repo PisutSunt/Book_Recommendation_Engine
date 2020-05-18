@@ -77,13 +77,13 @@ public class RegisterPane implements ActionListener
 		secondGenre.setBounds(30, 210 , 60, 25);
 		panelReg.add(secondGenre);
 		
-		genre2 = new JComboBox((genreList.stream()
-										.filter(genreList -> 
-													!(
-														genre1.getSelectedItem().equals(genreList))
-													)
-												)
-										.collect(Collectors.toList()));
+//		genre2 = new JComboBox((genreList.stream()
+//										.filter(genreList -> 
+//													!(
+//														genre1.getSelectedItem().equals(genreList))
+//													)
+//												)
+//										.collect(Collectors.toList()));
 		
 		genre2.setBounds(100, 210, 165, 25);
 		panelReg.add(genre2);
