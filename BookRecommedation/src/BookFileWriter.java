@@ -21,7 +21,6 @@ public class BookFileWriter extends TextFileWriter
 
     public boolean writeBook()
     {
-        boolean success = true;
         boolean bOk = creatFile(filename);
         String line = null;
         if (bOk)
@@ -39,10 +38,11 @@ public class BookFileWriter extends TextFileWriter
                 }
                 catch (Exception exception)
                 {
+
                     System.out.println(exception);
                 }
             }
         }
-        return success;
+        return bOk;
     }
 }
