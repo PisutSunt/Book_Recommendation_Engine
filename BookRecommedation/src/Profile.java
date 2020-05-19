@@ -5,11 +5,11 @@ public class Profile
 	private String userName;
 	private String email;
 	private String password;
-	private ArrayList<String> interestedGenre = new ArrayList<>();
+	private String[] interestedGenre = new String[5];
 	private Cart cart = new Cart();
 	private BillCollection userBills = new BillCollection();
 
-	public Profile(String userName, String email, String password, ArrayList<String> genre)
+	public Profile(String userName, String email, String password, String[] genre)
 	{
 		this.userName = userName;
 		this.email = email;
@@ -17,7 +17,7 @@ public class Profile
 		interestedGenre = genre;
 	}
 
-	public String getName()
+	public String getUserName()
 	{
 		return userName;
 	}
@@ -32,7 +32,7 @@ public class Profile
 		return password;
 	}
 
-	public ArrayList<String> getGenre()
+	public String[] getGenre()
 	{
 		return interestedGenre;
 	}
