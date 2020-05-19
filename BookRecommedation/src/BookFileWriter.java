@@ -7,7 +7,16 @@ public class BookFileWriter extends TextFileWriter
     @Override
     protected void writeStructureGuide() 
     {
-        
+        String guide = "title; author; genre; page length; price; [total bought]; abstract; remaining; ISBN;";
+        try
+        {
+            writer.write(guide);
+            writer.newLine();
+        }
+        catch (Exception exception)
+        {
+            System.out.println(exception);
+        }
     }
 
     public boolean writeBook()
@@ -20,7 +29,18 @@ public class BookFileWriter extends TextFileWriter
             for (Enumeration<Book> i = BookCollection.bookCollection.elements(); i.hasMoreElements();)
             {
                 Book tempBook = i.nextElement();
-                tempBook.getTitle()
+                line = tempBook.getTitle() + ";" + tempBook.getAuthor() + ";" + tempBook.getGenre() + ";" 
+                    + tempBook.getLengthInPages() + ";" + tempBook.getPrice() + ";" + tempBook.getTotalBought() 
+                    + ";" + tempBook.getAbtract() + ";" + tempBook.getRemaining() + ";" + tempBook.getISBN() + ";";
+                try
+                {
+                    writer.write(line);
+                    writer.newLine();
+                }
+                catch (Exception exception)
+                {
+                    System.out.println(exception);
+                }
             }
         }
         return success;
