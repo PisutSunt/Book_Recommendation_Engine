@@ -23,4 +23,9 @@ public class Bill
         this.totalPrice = totalPrice;
         date = new Date();
     }
+
+    public int getBillNo()
+    {
+        return billNo;
+    }
 }
