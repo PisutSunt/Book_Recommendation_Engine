@@ -8,4 +8,9 @@ public class ProfileCollection
     {
         return profileDict.get(userName);
     }
+
+    public static Dictionary<String, Profile> getProfileDict()
+    {
+        return profileDict;
+    }
 }
