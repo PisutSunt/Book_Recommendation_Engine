@@ -29,7 +29,7 @@ public class ProfileFileWriter extends TextFileWriter
             for (Enumeration<Profile> i = ProfileCollection.getProfileDict().elements(); i.hasMoreElements();)
             {
                 Profile tempProfile = i.nextElement();
-                line = tempProfile.getName() + ";" + tempProfile.getEmail() + ";" + tempProfile.getPassword() + ";";
+                line = tempProfile.getUserName() + ";" + tempProfile.getEmail() + ";" + tempProfile.getPassword() + ";";
                 for (String genre : tempProfile.getGenre())
                     line = line + genre + ";";
                 try

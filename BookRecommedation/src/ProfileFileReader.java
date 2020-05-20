@@ -29,10 +29,10 @@ public class ProfileFileReader extends TextFileReader
 					if (checkProfileCommand(line))
 					{
 						String fields[] = line.split(";");
-						ArrayList<String> genre = new ArrayList<String>();
+						String[] genre = new String[5];
 						for (int i = 3; i < fields.length; i++)
 						{
-							genre.add(fields[i]);
+							genre[i-3] = fields[i];
 						}
 						newProfile = new Profile(fields[0], fields[1], fields[2], genre);
 					}

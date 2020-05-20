@@ -1,2 +1,9 @@
-/RegisterPane.class
-/WelcomePage$1.class
+/Index.class
+/Login.class
+/CreateAccount.class
+/backup/
+/BillFileReader.class
+/BookCollection.class
+/BookFileWriter.class
+/ProfileCollection.class
+/TextFileWriter.class

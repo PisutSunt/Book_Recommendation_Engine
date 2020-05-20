@@ -5,6 +5,7 @@ public class TestClass
 {
 	public static void main(String[] args) 
 	{
+<<<<<<< HEAD
 		// WelcomePage welcome = new WelcomePage();
 		String[] e = {"s", "ee", "qe"};
 		Profile p = new Profile("userName", "email", "password", e);
@@ -20,5 +21,10 @@ public class TestClass
 			ex.printStackTrace();
 			System.out.println(ex);
         }
+=======
+//		WelcomePage welcome = new WelcomePage();
+		Index index = new Index();
+		
+>>>>>>> 5ea38498676ad1aa02e1f9aa2318550cb69022c9
 	}
 }

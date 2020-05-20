@@ -21,13 +21,15 @@ public class WelcomePage
 		RegisterPane regPane = new RegisterPane();
 		
 		JLabel regLabel = new JLabel("<html><a href=''>Create&nbsp;account?</a></html>");;
-		regLabel.setBounds(115, 120, 100, 25);
+		regLabel.setBounds(115, 125, 95, 15);
 		regLabel.addMouseListener(new MouseAdapter()
 				{
 					public void mouseClicked(MouseEvent me)
 					{
 						frame.setContentPane(regPane.getPane());
+						frame.setSize(350, 420);
 						frame.revalidate();
+						frame.setLocationRelativeTo(null);			
 					}
 				});
 		regLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
