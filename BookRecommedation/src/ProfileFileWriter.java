@@ -23,9 +23,9 @@ public class ProfileFileWriter extends TextFileWriter
     {
         boolean bOk = creatFile(filename);
         String line = null;
-        writeStructureGuide();
         if (bOk)
         {
+            writeStructureGuide();
             for (Enumeration<Profile> i = ProfileCollection.getProfileDict().elements(); i.hasMoreElements();)
             {
                 Profile tempProfile = i.nextElement();

@@ -23,9 +23,9 @@ public class BookFileWriter extends TextFileWriter
     {
         boolean bOk = creatFile(filename);
         String line = null;
-        writeStructureGuide();
         if (bOk)
         {
+            writeStructureGuide();
             for (Enumeration<Book> i = BookCollection.bookCollection.elements(); i.hasMoreElements();)
             {
                 Book tempBook = i.nextElement();
