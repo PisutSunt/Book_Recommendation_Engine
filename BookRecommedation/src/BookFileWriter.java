@@ -23,6 +23,7 @@ public class BookFileWriter extends TextFileWriter
     {
         boolean bOk = creatFile(filename);
         String line = null;
+        writeStructureGuide();
         if (bOk)
         {
             for (Enumeration<Book> i = BookCollection.bookCollection.elements(); i.hasMoreElements();)
