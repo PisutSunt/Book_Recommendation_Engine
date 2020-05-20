@@ -8,3 +8,10 @@
 /ProfileCollection.class
 /TextFileWriter.class
 /HomePage.class
+/BillCollectionFileReader.class
+/BillCollectionFileWriter.class
+/BillManager.class
+/BookCollectionFileReader.class
+/BookCollectionFileWriter.class
+/ProfileCollecionFileWriter.class
+/ProfileCollectionFileReader.class

@@ -18,11 +18,6 @@ public class ProfileCollection
     {
         return profileTable.get(userName);
     }
-
-    public static Dictionary<String, Profile> getProfileDict()
-    {
-        return profileDict;
-    }
     
     public static void addUser(String userName, Profile profile)
     {

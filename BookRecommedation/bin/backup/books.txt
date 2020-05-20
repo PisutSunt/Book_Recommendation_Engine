@@ -1,3 +1,0 @@
-title; author; genre; page length; price; [total bought]; abstract; remaining; ISBN;
-ABC;Peter;Horror;12;50.0;2;The basic English alphabets;100;A00001;
-Prima;Aicque;Kids;1000;32.98;The best book for kids;12;A00002;
