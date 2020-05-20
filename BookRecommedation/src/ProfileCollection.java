@@ -1,18 +1,26 @@
-import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class ProfileCollection
 {
-    private static Dictionary<String, Profile> profileDict = new Hashtable();
+    private static Hashtable<String, Profile> profileTable = new Hashtable<String, Profile>();
 
-    public static Profile getProfile(String userName)
+    public static boolean isUserNameExisted(String userName)
     {
-        return profileDict.get(userName);
+    	return profileTable.containsKey(userName);
     }
     
-    public static boolean addUser(String userName, Profile profile)
+    public static boolean isEmailAlreadyUsed(String email)
     {
-    	profileDict.put(userName, profile);
-    	return true;
+    	return email.equals("email");
+    }
+    
+    public static Profile getProfile(String userName)
+    {
+        return profileTable.get(userName);
+    }
+    
+    public static void addUser(String userName, Profile profile)
+    {
+    	profileTable.put(userName, profile);
     }
 }
