@@ -1,2 +1,0 @@
-username; email; password; genre
-peterpisut;peterpisut@gmail.com;123456;Sci-Fi;Kid;Horror;Fantasy;Adventure;

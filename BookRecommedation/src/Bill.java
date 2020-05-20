@@ -11,30 +11,16 @@ public class Bill
     private String shippingAddress;
     private float totalPrice;
     private Date date;
-    static private int billCounter = 0;
-
-    public Bill(Cart cart, Profile buyer,String receiver, String shippingAddress)
-    {
-        billNo = billCounter;
-        this.buyer = buyer;
-        boughtBooks = cart.getSelectedBooks();
-        this.receiver = receiver;
-        this.shippingAddress = shippingAddress;
-        totalPrice = cart.getTotalPrice();
-        date = new Date();
-        billCounter++;
-    }
 
     public Bill(int billNo, Profile buyer, ArrayList<Pair<Book, Integer>> boughtBooks, String receiver, 
-            String shippAddress, float totalPrice, long milliseconds)
+            String shippingAddress, float totalPrice)
     {
         this.billNo = billNo;
         this.buyer = buyer;
         this.boughtBooks = boughtBooks;
         this.receiver = receiver;
-        this.shippingAddress = shippAddress;
+        this.shippingAddress = shippingAddress;
         this.totalPrice = totalPrice;
-        date = new Date(milliseconds);
-        billCounter++;
+        date = new Date();
     }
 }

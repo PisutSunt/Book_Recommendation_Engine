@@ -4,32 +4,70 @@ public class CreateAccount
 {
 	private static Scanner sc = new Scanner(System.in);
 	private static String[] Genres = {"Education", "Sci-Fi", "Adventure", "Romance", "History"
-										, "Biography", "Comics", "Mystery", "Technology", "Business", "Language"};
-	private String user;
-	private String email;
-	private String pass;
-	private String[] userGenre = new String[5];
-	public CreateAccount()
+										, "Biography", "Comics", "Mystery", "Technology", "Business", "Language", "Fantasy", "Horror"};
+	private static String userName;
+	private static String email;
+	private static String password;
+	private static String[] userGenre = new String[5];
+	
+	public static void createAccount()
 	{
 		System.out.println("\n------------------ Create account------------------ ");
 		
-		System.out.print("Enter email> ");
-		email = sc.nextLine();
-		System.out.print("Enter username> ");
-		user = sc.nextLine();
+		while(true)
+		{
+			System.out.print("Enter email> ");
+			email = sc.nextLine();
+			if(ProfileCollection.isEmailAlreadyUsed(email))
+			{
+				System.out.println("\t*** This email is already used! ***");
+				continue;
+			}
+			else
+			{
+				break;
+			}
+		}
+		
+		while(true)
+		{
+			System.out.print("Enter username> ");
+			userName = sc.nextLine();
+			if(ProfileCollection.isUserNameExisted(userName))
+			{
+				System.out.println("\t*** This username is already used! ***");
+				continue;
+			}
+			else
+			{
+				break;
+			}
+		}
+		
 		while(true)
 		{			
-			System.out.print("Enter password> ");
-			pass = sc.nextLine();
+			while(true)
+			{
+				System.out.print("Enter password> ");
+				password = sc.nextLine();
+				if(password.length() < 6)
+				{
+					System.out.println("\t*** Password is too short! ***");					
+				}
+				else
+				{
+					break;
+				}
+			}
 			System.out.print("Confirm password> ");
 			String confPass = sc.nextLine();
-			if(pass.equals(confPass))
+			if(password.equals(confPass))
 			{
 				break;
 			}
 			else
 			{
-				System.out.println("*** Password inconsistent ***");
+				System.out.println("\t*** Password inconsistent! ***");
 				continue;
 			}
 		}
@@ -58,14 +96,16 @@ public class CreateAccount
 			String ans = sc.next();
 			if(ans.equals("Y"))
 			{
-				System.out.println("*** Create account success! ***");
-				Profile profile = new Profile(user, email, pass, userGenre);
+				Profile profile = new Profile(userName, email, password, userGenre);
 				ProfileCollection.addUser(profile.getUserName(), profile);
+				System.out.println("\t*** Create account success! ***");
+				Index.showIndex();
 				break;
 			}
 			else if(ans.equals("N"))
 			{
-				System.out.println("*** Create account failed! ***");
+				System.out.println("\t*** Create account failed! ***");
+				Index.showIndex();
 				break;
 			}
 			else
@@ -74,5 +114,6 @@ public class CreateAccount
 			}
 		}
 		
+	
 	}
 }

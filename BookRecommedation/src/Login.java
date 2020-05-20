@@ -2,35 +2,38 @@ import java.util.Scanner;
 
 public class Login
 {
-	Scanner sc = new Scanner(System.in);
-	public Login()
+	private static Scanner sc = new Scanner(System.in);
+	private static String userName;
+	private static String password;
+	
+	public static void login()
 	{
 		
-		System.out.println("\n------------------Login page------------------");
+		System.out.println("\n------------------Login page------------------\n");
 		
 		while(true)
 		{
 			
 			System.out.print("Enter username> ");
-			String user = sc.nextLine();
+			userName = sc.nextLine();
 			System.out.print("Enter password> ");
-			String pass = sc.nextLine();
+			password = sc.nextLine();
 			
-			if(user.equals("admin") && pass.equals("root"))
+			if(userName.equals("admin") && password.equals("root"))
 			{
-				System.out.println("***Login successful!***");
+				System.out.println("\n*** Login success! ***");
 				break;
 				
 			}
 			else
 			{
-				System.out.println("***Username or Password incorrect!***\n");
+				System.out.println("\n*** Username or Password incorrect! ***\n");
 				continue;
 			}
 		
 		}
 		
-		//This line for link to homepage
+		HomePage.showMainMenu();
 		
 	}
 }
