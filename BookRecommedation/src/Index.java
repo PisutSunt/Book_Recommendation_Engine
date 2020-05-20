@@ -3,26 +3,51 @@ import java.util.Scanner;
 public class Index
 {
 	private static Scanner sc = new Scanner(System.in);
+	private static int selMenu;
 	public static void showIndex()
 	{
-		System.out.println("******Welcome to book recommended engine!******");
-		System.out.println("Please select option number!");
-		System.out.println("1. Login");
-		System.out.println("2. Create account");
-		System.out.print("\n>> ");
+		System.out.println("------------------ Welcome to book recommended engine! ------------------");
+		System.out.println("\tPlease select menu number!");
+		System.out.println("\t1. Login");
+		System.out.println("\t2. Create account");
 		
-		int option = sc.nextInt();
+		while(true)
+		{
+			System.out.print("\n>> ");
+			if(sc.hasNextInt())
+			{
+				selMenu = sc.nextInt();
+				if(selMenu == 1 || selMenu == 2)
+				{
+					break;					
+				}
+				else
+				{
+					System.out.println("\t*** Please select menu 1 or 2 ***");
+					continue;
+				}
+			}
+			else
+			{
+				System.out.println("\t*** Invalid input! ***");
+				sc.next();
+				continue;
+			}
+		}
 		
-		if(option == 1)
+		
+		switch(selMenu)
 		{
-			Login.login();
+			case 1:
+				Login.login();
+				break;
+			case 2:
+				CreateAccount.createAccount();
+				break;
+			default:
+				break;
 		}
-		else if(option == 2)
-		{
-			CreateAccount.createAccount();
-		}
+		
 		
 	}
-	
-	
 }

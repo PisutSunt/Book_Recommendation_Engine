@@ -9,7 +9,7 @@ public class Login
 	public static void login()
 	{
 		
-		System.out.println("\n------------------Login page------------------");
+		System.out.println("\n------------------Login page------------------\n");
 		
 		while(true)
 		{
@@ -21,19 +21,19 @@ public class Login
 			
 			if(userName.equals("admin") && password.equals("root"))
 			{
-				System.out.println("\t*** Login success! ***");
+				System.out.println("\n*** Login success! ***");
 				break;
 				
 			}
 			else
 			{
-				System.out.println("\t*** Username or Password incorrect! ***\n");
+				System.out.println("\n*** Username or Password incorrect! ***\n");
 				continue;
 			}
 		
 		}
 		
-		//This line for link to homepage
+		HomePage.showMainMenu();
 		
 	}
 }
