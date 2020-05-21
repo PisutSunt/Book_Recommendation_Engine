@@ -23,4 +23,14 @@ public class ProfileCollection
     {
     	profileTable.put(userName, profile);
     }
+    
+    public static void showAllProfile()
+    {
+    	System.out.println(profileTable);
+    }
+    
+    public static void initialize()
+    {
+    	Object obj = ProfileCollectionFileReader.ReadObjectFromFile();
+    }
 }

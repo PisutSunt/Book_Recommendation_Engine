@@ -32,7 +32,7 @@ public class Login
 			}
 		
 		}
-		
+//		HomePage.setCurrentUser(ProfileCollection.getProfile(userName));
 		HomePage.showMainMenu();
 		
 	}
