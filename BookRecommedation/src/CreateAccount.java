@@ -17,7 +17,12 @@ public class CreateAccount
 		while(true)
 		{
 			System.out.print("Enter email> ");
+//			if(sc.hasNext())
+//			{
+//				sc.next();				
+//			}
 			email = sc.nextLine();
+			
 			if(ProfileCollection.isEmailAlreadyUsed(email))
 			{
 				System.out.println("\t*** This email is already used! ***");
@@ -98,6 +103,7 @@ public class CreateAccount
 			{
 				Profile profile = new Profile(userName, email, password, userGenre);
 				ProfileCollection.addUser(profile.getUserName(), profile);
+				ProfileCollection.updateFile();
 				System.out.println("\n\t*** Create account success! ***\n");
 				Index.showIndex();
 				break;

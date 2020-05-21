@@ -36,7 +36,12 @@ public class ProfileCollection implements Serializable
     
     public static void initialize()
     {
-        profileTable = (Hashtable<String, Profile>)IOUtils.ReadObjectFromFile(".\\backup\\profileCollection");
+        profileTable = (Hashtable<String, Profile>)IOUtils.ReadObjectFromFile("profileCollection");
+    }
+    
+    public static void updateFile()
+    {
+    	IOUtils.WriteObjectToFile("profileCollection", (Hashtable<String, Profile>)profileTable);
     }
 
     public static Hashtable<String, Profile> getProfileCollection()

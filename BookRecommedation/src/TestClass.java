@@ -4,7 +4,7 @@ public class TestClass
 	{
 //		WelcomePage welcome = new WelcomePage();
 		ProfileCollection.initialize();
-		ProfileCollection.showAllProfile();
+//		ProfileCollection.showAllProfile();
 		Index.showIndex();
 		
 	}
