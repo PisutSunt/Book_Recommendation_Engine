@@ -1,7 +1,12 @@
+import java.io.Serializable;
 import java.util.Hashtable;
 
-public class ProfileCollection
+public class ProfileCollection implements Serializable
 {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 5306604982834603924L;
     private static Hashtable<String, Profile> profileTable = new Hashtable<String, Profile>();
 
     public static boolean isUserNameExisted(String userName)
@@ -31,6 +36,11 @@ public class ProfileCollection
     
     public static void initialize()
     {
-    	
+        profileTable = (Hashtable<String, Profile>)IOUtils.ReadObjectFromFile(".\\backup\\profileCollection");
+    }
+
+    public static Hashtable<String, Profile> getProfileCollection()
+    {
+        return profileTable;
     }
 }
