@@ -72,7 +72,7 @@ public class CreateAccount
 			}
 		}
 		
-		System.out.println("--- Choose your most interested book genres by enter their number(up to 5) ---");
+		System.out.println("\n--- Choose your most interested book genres by enter their number(up to 5) ---");
 		for(int i = 0; i<Genres.length; i++)
 		{
 			System.out.println("\t" + (i+1) + ". " + Genres[i]);
@@ -83,8 +83,8 @@ public class CreateAccount
 		int choice = -1;
 		for(int i = 0; i<5; i++)
 		{
-			System.out.print("Genre " + (i+1) + "> ");
-			choice = sc.nextInt();
+			System.out.print("Genre " + (i+1));
+			choice = IOUtils.checkInputMenu(0, Genres.length);
 			if(choice == 0)
 				break;
 			userGenre[i] = Genres[choice];
@@ -98,13 +98,13 @@ public class CreateAccount
 			{
 				Profile profile = new Profile(userName, email, password, userGenre);
 				ProfileCollection.addUser(profile.getUserName(), profile);
-				System.out.println("\t*** Create account success! ***");
+				System.out.println("\n\t*** Create account success! ***\n");
 				Index.showIndex();
 				break;
 			}
 			else if(ans.equals("N"))
 			{
-				System.out.println("\t*** Create account failed! ***");
+				System.out.println("\n\t*** Create account failed! ***\n");
 				Index.showIndex();
 				break;
 			}

@@ -1,13 +1,12 @@
-import java.util.Scanner;
 
 public class HomePage
 {
-	private static Scanner sc = new Scanner(System.in);
-	private static int selMenu;
 	private static Profile currentUser;
 	
 	public static void showMainMenu()
 	{
+		int selMenu;
+		
 		System.out.println("\n------------------ Main menu ------------------");
 		System.out.println("\t1. Request recommendations (based on your interested genres).");
 		System.out.println("\t2. See best seller of the last month.");
@@ -15,31 +14,7 @@ public class HomePage
 		System.out.println("\t4. View your cart.");
 		System.out.println("\t5. View buying history.");
 		
-		while(true)
-		{
-			
-			System.out.print("\n>> ");
-			if(sc.hasNextInt())
-			{
-				selMenu = sc.nextInt();
-				if(selMenu > 0 && selMenu < 6)
-				{
-					break;					
-				}
-				else
-				{
-					System.out.println("\t*** Please select menu 1-5 ***");
-					continue;
-				}
-			}
-			else
-			{
-				System.out.println("\t*** Invalid input! ***");
-				sc.next();
-				continue;
-			}
-		}
-		
+		selMenu = IOUtils.checkInputMenu(1, 5);
 		
 		switch(selMenu)
 		{
@@ -92,8 +67,8 @@ public class HomePage
 	{
 		System.out.println(">>> View buying history...");
 //		System.out.println("Current user: " + currentUser);
-		ProfileCollection.initialize();
-		ProfileCollection.showAllProfile();
+//		ProfileCollection.initialize();
+//		ProfileCollection.showAllProfile();
 	}
 	
 	public static void setCurrentUser(Profile user)

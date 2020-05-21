@@ -2,9 +2,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Scanner;
 
 public class IOUtils
 {
+	private static Scanner sc = new Scanner(System.in);
+	
     public static Object ReadObjectFromFile(String filepath) 
     {
         try
@@ -38,4 +41,34 @@ public class IOUtils
             exception.printStackTrace();
         }
     }
+    
+    public static int checkInputMenu(int min, int max)
+    {
+    	int selMenu;
+    	while(true)
+		{
+			System.out.print("\n>> ");
+			if(sc.hasNextInt())
+			{
+				selMenu = sc.nextInt();
+				if(selMenu >= min && selMenu <= max)
+				{
+					break;					
+				}
+				else
+				{
+					System.out.println("\t*** Please select menu " + min + "-" + max + " ***");
+					continue;
+				}
+			}
+			else
+			{
+				System.out.println("\t*** Invalid input! ***");
+				sc.next();
+				continue;
+			}
+		}
+    	return selMenu;
+    }
+    
 }

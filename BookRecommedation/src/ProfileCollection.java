@@ -31,6 +31,6 @@ public class ProfileCollection
     
     public static void initialize()
     {
-    	Object obj = ProfileCollectionFileReader.ReadObjectFromFile();
+    	
     }
 }
