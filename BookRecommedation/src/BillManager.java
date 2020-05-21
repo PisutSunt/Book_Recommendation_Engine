@@ -23,5 +23,6 @@ public class BillManager
                             String receiver, String shippingAddress, float totalPrice)
     {
         Bill newBill = new Bill(billCounter, buyer, boughtBooks, receiver, shippingAddress, totalPrice);
+        
     }
 }
