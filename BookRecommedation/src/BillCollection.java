@@ -13,4 +13,18 @@ public class BillCollection implements Serializable
     {
         return billCollection;
     }
+
+    public boolean addBill(Bill bill)
+    {
+        try
+        {
+            billCollection.add(bill);
+        }
+        catch (Exception exception)
+        {
+            exception.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }
