@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Dictionary;
+import java.util.Hashtable;
 
 public class BookCollection
 {
-    public static Dictionary<String, Book> bookCollection;
+    public static Dictionary<String, Book> bookCollection = new Hashtable<String, Book>();
     private ArrayList<Book> bookToShow;
 
     public static Book getBook(String keyword)
