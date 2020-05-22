@@ -8,18 +8,10 @@ public class BillManager
     private static Hashtable<Profile, BillCollection> allBillCollection = new Hashtable<Profile, BillCollection>();
     private static int billCounter = 0;
 
-    // public static Bill searchBill(int billNo)
-    // {
-    //     for (BillCollection billCollection : allBillCollection) 
-    //     {
-    //         for (Bill bill : billCollection.getBillCollection()) 
-    //         {
-    //             if (bill.getBillNo() == billNo)
-    //                 return bill;
-    //         }
-    //     }
-    //     return null;
-    // }
+    public static BillCollection findBillCollection(Profile user)
+    {
+        return allBillCollection.get(user);
+    }
 
     public static void createBill(Profile buyer, ArrayList<Pair<Book, Integer>> boughtBooks, 
                             String receiver, String shippingAddress, float totalPrice)
