@@ -47,29 +47,33 @@ public class BookCollection
 
     public static ArrayList<Book> recommendByCommunity(Profile user)
     {
-        ArrayList<Book> recommendBookList = new ArrayList<Book>();
-        Set<Book> recommendBookSet = new LinkedHashSet<Book>();
-        Set<Profile> communitySet = new LinkedHashSet<Profile>();
-        System.out.println();
-        ArrayList<Pair<Book, Integer>> latestItems = user.getUserBillCollection().getBillCollection()
-                    .get(user.getUserBillCollection().getBillCollection().size() - 1).getBoughtBooks();
-        for (Pair<Book, Integer> item : latestItems)
+        if (!user.getUserBillCollection().getBillCollection().isEmpty())
         {
-            Book tempBook = item.getKey();
-            communitySet.addAll(userListBuyBook.get(tempBook.getKeywords()));
-        }
-        for (Profile tempUser : communitySet) 
-        {
-            for (Pair<Book, Integer> item : tempUser.getUserBillCollection().getBillCollection()
-                .get(tempUser.getUserBillCollection().getBillCollection().size() - 1).getBoughtBooks()) 
+            ArrayList<Book> recommendBookList = new ArrayList<Book>();
+            Set<Book> recommendBookSet = new LinkedHashSet<Book>();
+            Set<Profile> communitySet = new LinkedHashSet<Profile>();
+            System.out.println();
+            ArrayList<Pair<Book, Integer>> latestItems = user.getUserBillCollection().getBillCollection()
+                        .get(user.getUserBillCollection().getBillCollection().size() - 1).getBoughtBooks();
+            for (Pair<Book, Integer> item : latestItems)
             {
-                if (!userListBuyBook.get(item.getKey().getKeywords()).contains(user))
-                    recommendBookSet.add(item.getKey());
+                Book tempBook = item.getKey();
+                communitySet.addAll(userListBuyBook.get(tempBook.getKeywords()));
             }
+            for (Profile tempUser : communitySet) 
+            {
+                for (Pair<Book, Integer> item : tempUser.getUserBillCollection().getBillCollection()
+                    .get(tempUser.getUserBillCollection().getBillCollection().size() - 1).getBoughtBooks()) 
+                {
+                    if (!userListBuyBook.get(item.getKey().getKeywords()).contains(user))
+                        recommendBookSet.add(item.getKey());
+                }
+            }
+            recommendBookList.addAll(recommendBookSet);
+            Collections.sort(recommendBookList);
+            return recommendBookList;
         }
-        recommendBookList.addAll(recommendBookSet);
-        Collections.sort(recommendBookList);
-        return recommendBookList;
+        return null;
     }
 
     public static void addUserBuyBook(Profile user, ArrayList<Pair<Book, Integer>> itemList)
