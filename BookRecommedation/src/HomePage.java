@@ -207,9 +207,14 @@ public class HomePage
 	{
 		System.out.println(">>> View buying history...");
 
-		System.out.println("\tOrderNo.\tOrderDate\tTotalPrice");
-		BillCollection bills = currentUser.getUserBillCollection();
+		BillCollection bills = BillManager.findBillCollection(currentUser);
+		if(bills == null)
+		{
+			System.out.println("\t*** You need to buy something first! ***");
+			showMainMenu();
+		}
 		int index = 0;
+		System.out.println("\tOrderNo.\tOrderDate\tTotalPrice");
 //		for(ArrayList<Bill> itr: bills)
 //		{
 //			index++;
