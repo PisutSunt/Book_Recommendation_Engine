@@ -49,7 +49,9 @@ public class BookCollection
         ArrayList<Book> recommendBookList = new ArrayList<Book>();
         Set<Book> recommendBookSet = new LinkedHashSet<Book>();
         Set<Profile> communitySet = new LinkedHashSet<Profile>();
-        ArrayList<Pair<Book, Integer>> latestItems = user.getBill().get(user.getBill().size() - 1).getBoughtBooks();
+        System.out.println();
+        ArrayList<Pair<Book, Integer>> latestItems = user.getUserBillCollection().getBillCollection()
+                    .get(user.getUserBillCollection().getBillCollection().size() - 1).getBoughtBooks();
         for (Pair<Book, Integer> item : latestItems)
         {
             Book tempBook = item.getKey();
@@ -57,7 +59,8 @@ public class BookCollection
         }
         for (Profile tempUser : communitySet) 
         {
-            for (Pair<Book, Integer> item : tempUser.getBill().get(tempUser.getBill().size() - 1).getBoughtBooks()) 
+            for (Pair<Book, Integer> item : tempUser.getUserBillCollection().getBillCollection()
+                .get(tempUser.getUserBillCollection().getBillCollection().size() - 1).getBoughtBooks()) 
             {
                 recommendBookSet.add(item.getKey());
             }

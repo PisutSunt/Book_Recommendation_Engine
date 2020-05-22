@@ -96,6 +96,7 @@ public class Cart implements Serializable
         System.out.print("Address: ");
         String shippingAddress = scanner.nextLine();
         // BillManager.createBill(buyer, selectedBooks, receiver, shippingAddress, totalPrice);
+        // update billCollection ที่ Profile ด้วย
         scanner.close();
     }
 }

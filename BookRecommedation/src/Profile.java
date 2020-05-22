@@ -47,8 +47,13 @@ public class Profile implements Serializable
 		return cart;
 	}
 
-	public ArrayList<Bill> getBill()
+	public BillCollection getUserBillCollection()
 	{
-		return userBills.getBillCollection();
+		return userBills;
+	}
+
+	public void updateBillCollection(Bill bill)
+	{
+		this.userBills.addBill(bill);
 	}
 }
