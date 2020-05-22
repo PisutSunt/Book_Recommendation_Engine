@@ -47,7 +47,7 @@ public class BookCollection
 
     public static ArrayList<Book> recommendByCommunity(Profile user)
     {
-        if (!user.getUserBillCollection().getBillCollection().isEmpty())
+        if (!BillManager.findBillCollection(user).getBillCollection().isEmpty())
         {
             ArrayList<Book> recommendBookList = new ArrayList<Book>();
             Set<Book> recommendBookSet = new LinkedHashSet<Book>();
