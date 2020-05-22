@@ -10,4 +10,14 @@ public class BookCollection
     {
         return bookCollection.get(keyword);
     }
+
+    public static void addBook(Book book)
+    {
+        bookCollection.put(book.getKeywords(), book);
+    }
+
+    public static Dictionary<String, Book> getBookCollection()
+    {
+        return bookCollection;
+    }
 }
