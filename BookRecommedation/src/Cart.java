@@ -1,7 +1,5 @@
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import javafx.util.Pair;
 
 public class Cart implements Serializable
@@ -104,6 +102,7 @@ public class Cart implements Serializable
             System.out.print("Address> ");
             String shippingAddress = IOUtils.getString();
             BillManager.createBill(buyer, selectedBooks, receiver, shippingAddress, totalPrice);
+            selectedBooks.clear();
             return true;
         }
         return false;

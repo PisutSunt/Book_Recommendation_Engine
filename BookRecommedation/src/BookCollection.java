@@ -47,12 +47,12 @@ public class BookCollection
 
     public static ArrayList<Book> recommendByCommunity(Profile user)
     {
-        if (!(user.getUserBillCollection().getBillCollection().isEmpty()))
+        if (!BillManager.findBillCollection(user).getBillCollection().isEmpty())
         {
-        	System.out.println("I'm here");
             ArrayList<Book> recommendBookList = new ArrayList<Book>();
             Set<Book> recommendBookSet = new LinkedHashSet<Book>();
             Set<Profile> communitySet = new LinkedHashSet<Profile>();
+            System.out.println();
             ArrayList<Pair<Book, Integer>> latestItems = user.getUserBillCollection().getBillCollection()
                         .get(user.getUserBillCollection().getBillCollection().size() - 1).getBoughtBooks();
             for (Pair<Book, Integer> item : latestItems)
