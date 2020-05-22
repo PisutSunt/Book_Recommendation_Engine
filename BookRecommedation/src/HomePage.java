@@ -86,6 +86,9 @@ public class HomePage
 				break;
 			case 2:
 				ArrayList<Book> list2 = BookCollection.recommendByCommunity(currentUser);
+				System.out.println(
+						"------------------------------------------- Recommended books -------------------------------------------");
+				System.out.println("\t   Title\t\t\tAuthor\t\t\tGenre\t\t\tISBN");
 				break;
 			default:
 				break;
