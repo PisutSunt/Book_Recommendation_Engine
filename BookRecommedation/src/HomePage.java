@@ -57,35 +57,23 @@ public class HomePage
 	private static void searchBooks()
 	{
 		System.out.println(">>> Search for the books...");
-		System.out.println("    Search by...");
-		System.out.println("\t1. Title");
-		System.out.println("\t2. Author");
-		System.out.println("\t3. Genre");
-		System.out.println("\t4. ISBN");
-		System.out.println("\t0. Back to Main menu.");
+		System.out.print("Enter keywords> ");
+		String keywords = IOUtils.getString();
+		int foundNumber = BookCollection.searchBooks(keywords);
 		
-		int selMenu = IOUtils.checkInputMenu(0, 4);
-		boolean found;
-		switch(selMenu)
+		if(foundNumber > 0)
 		{
-			case 0:
-				showMainMenu();
-				break;
-			case 1:
-				found = BookCollection.searchBooks("a", "getTitle");
-				break;
-			case 2:
-				found = BookCollection.searchBooks("c", "getAuthor");
-				break;
-			case 3:
-				found = BookCollection.searchBooks("c", "getGenre");
-				break;
-			case 4:
-				found = BookCollection.searchBooks("c", "getISBN");
-				break;
-			default:
-				break;
+			System.out.print("\nSelect a book number to see the detail (or type '0' to back to main menu).");
+			int selMenu = IOUtils.checkInputMenu(0, foundNumber);
 		}
+		else
+		{
+			System.out.println("*** No item match your search ***");
+			showMainMenu();
+		}
+		
+		
+		
 	}
 	
 	private static void viewCart()

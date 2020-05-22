@@ -1,7 +1,3 @@
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -25,44 +21,52 @@ public class BookCollection
 		return bookCollection;
 	}
 
-	public static boolean searchBooks(String keywords, String field)
+	public static int searchBooks(String keywords)
 	{
 		Set<String> set = bookCollection.keySet().stream().filter(s -> s.contains(keywords))
 				.collect(Collectors.toSet());
-
 		if(set.isEmpty())
 		{
-			System.out.println("*** No item match your search ***");
-			return false;
+			return 0;
 		}
 		else
 		{
-			String methodName = field;
-			Class[] parameterType = null;
-			Book book = new Book("", "", "", 0, 0, "", 0, "");
-
-			try
+			System.out.println("\t   Title\t\t\tAuthor\t\t\tGenre\t\t\tISBN");
+			int index = 1;
+			for (String key : set)
 			{
-				Method method = book.getClass().getMethod(methodName, parameterType);
-				try
-				{
-					for (String key : set)
-					{
-						book = bookCollection.get(key);
-						System.out.println(method.invoke(book));
-					}
-				}
-				catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
-				{
-					e.printStackTrace();
-				}
-			}
-			catch (NoSuchMethodException | SecurityException e)
-			{
-				e.printStackTrace();
+				Book book = bookCollection.get(key);
+				System.out.printf("\t%d. %-28s %-23s %-23s %s\n", index, book.getTitle(), book.getAuthor(), book.getGenre(), book.getISBN());
+				index++;
 			}
 			
-			return true;
+			
+//			String methodName = field;
+//			Class[] parameterType = null;
+//			Book book = new Book("", "", "", 0, 0, "", 0, "");
+//
+//			try
+//			{
+//				Method method = book.getClass().getMethod(methodName, parameterType);
+//				try
+//				{
+//					for (String key : set)
+//					{
+//						book = bookCollection.get(key);
+//						System.out.println(method.invoke(book));
+//					}
+//				}
+//				catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
+//				{
+//					e.printStackTrace();
+//				}
+//			}
+//			catch (NoSuchMethodException | SecurityException e)
+//			{
+//				e.printStackTrace();
+//			}
+//			
+			return set.size();
 		}
 		
 	}
