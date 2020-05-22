@@ -17,20 +17,23 @@ public class CreateAccount
 		while(true)
 		{
 			System.out.print("Enter email> ");
-//			if(sc.hasNext())
-//			{
-//				sc.next();				
-//			}
 			email = sc.nextLine();
-			
-			if(ProfileCollection.isEmailAlreadyUsed(email))
+			if(ProfileCollection.isValidEmailAddress(email))
 			{
-				System.out.println("\t*** This email is already used! ***");
-				continue;
+				if(ProfileCollection.isEmailAlreadyUsed(email))
+				{
+					System.out.println("*** This email is already used! ***");
+					continue;
+				}
+				else
+				{
+					break;
+				}
 			}
 			else
 			{
-				break;
+				System.out.println("*** Invalid format! ***");
+				continue;
 			}
 		}
 		

@@ -34,7 +34,7 @@ public class IOUtils
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(targetObj);
             objectOut.close();
-            System.out.println("Finish writing file to a filepath: " + filepath);
+            System.out.println("Finish writing to file: " + filepath);
         }
         catch (Exception exception)
         {

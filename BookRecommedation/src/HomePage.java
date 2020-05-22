@@ -65,19 +65,23 @@ public class HomePage
 		System.out.println("\t0. Back to Main menu.");
 		
 		int selMenu = IOUtils.checkInputMenu(0, 4);
-		
+		boolean found;
 		switch(selMenu)
 		{
 			case 0:
 				showMainMenu();
 				break;
 			case 1:
+				found = BookCollection.searchBooks("a", "getTitle");
 				break;
 			case 2:
+				found = BookCollection.searchBooks("c", "getAuthor");
 				break;
 			case 3:
+				found = BookCollection.searchBooks("c", "getGenre");
 				break;
 			case 4:
+				found = BookCollection.searchBooks("c", "getISBN");
 				break;
 			default:
 				break;
@@ -100,7 +104,7 @@ public class HomePage
 				showMainMenu();
 				break;
 			case 1:
-				currentUser.getCart().showAllBooksInCart();
+//				currentUser.getCart().showAllBooksInCart();
 				viewCart();
 				break;
 			case 2:
