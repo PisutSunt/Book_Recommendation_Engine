@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.List;
+
+import javafx.util.Pair;
 
 public class HomePage
 {
@@ -59,12 +62,48 @@ public class HomePage
 		System.out.println(">>> Search for the books...");
 		System.out.print("Enter keywords> ");
 		String keywords = IOUtils.getString();
-		int foundNumber = BookCollection.searchBooks(keywords);
+		List<String> filteredBooks = BookCollection.searchBooks(keywords);
 		
-		if(foundNumber > 0)
+		if(filteredBooks != null)
 		{
 			System.out.print("\nSelect a book number to see the detail (or type '0' to back to main menu).");
-			int selMenu = IOUtils.checkInputMenu(0, foundNumber);
+			int selMenu = IOUtils.checkInputMenu(0, filteredBooks.size());
+			
+			if(selMenu == 0)
+			{
+				showMainMenu();
+			}
+			else
+			{
+				Book book = BookCollection.getBook(filteredBooks.get(selMenu-1));
+				System.out.println("\tTitle: " + book.getTitle());
+				System.out.println("\tAuthor: " + book.getAuthor());
+				System.out.println("\tGenre: " + book.getGenre());
+				System.out.println("\tPage length: " + book.getLengthInPages());
+				System.out.println("\tPrice (Baht): " + book.getPrice());
+				System.out.println("\tAbstract: " + book.getAbtract());
+				System.out.println("\tRamaining: " + book.getRemaining());
+				System.out.println("\tISBN: " + book.getISBN());
+				
+				System.out.println("--------------------------");
+				System.out.println("\tPlease select menu number!");
+				System.out.println("\t1. Add this book to cart");
+				System.out.println("\t0. Back to searching books");
+				
+				selMenu = IOUtils.checkInputMenu(0, 1);
+				if(selMenu == 0)
+				{
+					searchBooks();
+				}
+				else
+				{
+					int remaining = book.getRemaining();
+					System.out.println("Enter number of book to buy(remaining " + remaining + ")");
+					int bookCount = IOUtils.checkInputMenu(0, remaining);
+					boolean bOk = currentUser.getCart().addBookToCart(new Pair<>(book, bookCount));
+					System.out.println(bOk);
+				}
+			}
 		}
 		else
 		{

@@ -10,7 +10,7 @@ public class Cart implements Serializable
      *
      */
     private static final long serialVersionUID = 7695178204958042383L;
-    private ArrayList<Pair<Book, Integer>> selectedBooks;
+    private ArrayList<Pair<Book, Integer>> selectedBooks = new ArrayList<Pair<Book, Integer>>();
     private float totalPrice = 0;
 
     public float getTotalPrice()

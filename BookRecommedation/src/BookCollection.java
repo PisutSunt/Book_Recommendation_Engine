@@ -1,5 +1,5 @@
 import java.util.Hashtable;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class BookCollection
@@ -21,53 +21,29 @@ public class BookCollection
 		return bookCollection;
 	}
 
-	public static int searchBooks(String keywords)
+	public static List<String> searchBooks(String keywords)
 	{
-		Set<String> set = bookCollection.keySet().stream().filter(s -> s.contains(keywords))
-				.collect(Collectors.toSet());
-		if(set.isEmpty())
+		List<String> list = bookCollection.keySet().stream().filter(s -> s.contains(keywords))
+				.collect(Collectors.toList());
+		if(list.isEmpty())
 		{
-			return 0;
+			return null;
 		}
 		else
 		{
 			System.out.println("\t   Title\t\t\tAuthor\t\t\tGenre\t\t\tISBN");
 			int index = 1;
-			for (String key : set)
+			for (String key : list)
 			{
 				Book book = bookCollection.get(key);
 				System.out.printf("\t%d. %-28s %-23s %-23s %s\n", index, book.getTitle(), book.getAuthor(), book.getGenre(), book.getISBN());
 				index++;
 			}
 			
-			
-//			String methodName = field;
-//			Class[] parameterType = null;
-//			Book book = new Book("", "", "", 0, 0, "", 0, "");
-//
-//			try
-//			{
-//				Method method = book.getClass().getMethod(methodName, parameterType);
-//				try
-//				{
-//					for (String key : set)
-//					{
-//						book = bookCollection.get(key);
-//						System.out.println(method.invoke(book));
-//					}
-//				}
-//				catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
-//				{
-//					e.printStackTrace();
-//				}
-//			}
-//			catch (NoSuchMethodException | SecurityException e)
-//			{
-//				e.printStackTrace();
-//			}
-//			
-			return set.size();
+			return list;
 		}
 		
 	}
+	
+	
 }
