@@ -5,7 +5,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javafx.util.Pair;
 
 public class BookCollection
@@ -63,7 +62,8 @@ public class BookCollection
             for (Pair<Book, Integer> item : tempUser.getUserBillCollection().getBillCollection()
                 .get(tempUser.getUserBillCollection().getBillCollection().size() - 1).getBoughtBooks()) 
             {
-                recommendBookSet.add(item.getKey());
+                if (!userListBuyBook.get(item.getKey()).contains(user))
+                    recommendBookSet.add(item.getKey());
             }
         }
         recommendBookList.addAll(recommendBookSet);
