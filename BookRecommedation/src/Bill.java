@@ -28,4 +28,9 @@ public class Bill
     {
         return billNo;
     }
+
+    public ArrayList<Pair<Book, Integer>> getBoughtBooks()
+    {
+        return boughtBooks;
+    }
 }
