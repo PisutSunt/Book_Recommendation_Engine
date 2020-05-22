@@ -10,7 +10,7 @@ public class Cart implements Serializable
      *
      */
     private static final long serialVersionUID = 7695178204958042383L;
-    private ArrayList<Pair<Book, Integer>> selectedBooks = new ArrayList<Pair<Book, Integer>>();
+    private static ArrayList<Pair<Book, Integer>> selectedBooks = new ArrayList<Pair<Book, Integer>>();
     private float totalPrice = 0;
 
     public float getTotalPrice()
@@ -41,11 +41,15 @@ public class Cart implements Serializable
         this.totalPrice = totalPrice;
     }
 
-    public boolean addBookToCart(Pair<Book, Integer> item)
+    public boolean addBookToCart(Book book)
     {
+    	int remaining = book.getRemaining();
+		System.out.print("\nEnter number of book to buy(remaining " + remaining + ")");
+		int bookCount = IOUtils.checkInputMenu(0, remaining);
+    	
         try
         {
-            selectedBooks.add(item);
+            selectedBooks.add(new Pair<>(book, bookCount));
             calculateTotalPrice();
         }
         catch (Exception exception)
@@ -76,10 +80,12 @@ public class Cart implements Serializable
     {
         if (selectedBooks != null)
         {
+        	System.out.println("------------- Your cart -------------");
             for (Pair<Book, Integer> pair : selectedBooks)
             {
-                System.out.println(pair.toString());
+                System.out.println("\t" + pair.getKey().getTitle() + "   " + pair.getValue() + " pcs.");
             }
+            System.out.println("\n\tTotal price: " + totalPrice + " baht");
         }
         else
         {

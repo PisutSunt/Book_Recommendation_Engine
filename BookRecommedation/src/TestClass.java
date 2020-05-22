@@ -6,13 +6,14 @@ public class TestClass
 {
 	public static void main(String[] args) 
 	{
+		ProfileCollection.initialize();
 		String[] genre = {"fun", "happy"};
 		Profile p1 = new Profile("A", "email", "password", genre);
 		Profile p2 = new Profile("B", "email", "password", genre);
 		Profile p3 = new Profile("C", "email", "password", genre);
-		Book b1 = new Book("a", "A", "fun", 3, 10, "bookAbstract", 9, "1");
-		Book b2 = new Book("b", "B", "sad", 4, 20, "bookAbstract", 8, "2");
-		Book b3 = new Book("c", "C", "cry", 4, 20, "bookAbstract", 8, "3");
+		Book b1 = new Book("aaaaaaaaaaaaaaa", "Authoraaaaaaaaaaaa", "fun", 3, 10, "bookAbstract", 9, "1");
+		Book b2 = new Book("bbbbbbbbbbbbbbb", "Buthorrrrrrrrrrrrr", "sad", 4, 20, "bookAbstract", 8, "2");
+		Book b3 = new Book("ccccccccccccccc", "Cuthorrrrrrrrrrrrr", "cry", 4, 20, "bookAbstract", 8, "3");
 		BookCollection.addBook(b1);
 		BookCollection.addBook(b2);
 		BookCollection.addBook(b3);
@@ -29,13 +30,14 @@ public class TestClass
 		BillManager.createBill(p2, itemList, "receiver", "shippingAddress", 40);
 		System.out.println(BookCollection.recommendByContent(p1));
 		// System.out.println(BookCollection.recommendByCommunity(p3));
-		// try
-		// {
-		// 	IOUtils.WriteObjectToFile(".\\backup\\bookCollection", BookCollection.getBookCollection());
-		// }
-		// catch (Exception exception)
-		// {
-		// 	exception.printStackTrace();
-		// }
+		 try
+		 {
+		 	IOUtils.WriteObjectToFile("bookCollection", BookCollection.getBookCollection());
+		 }
+		 catch (Exception exception)
+		 {
+		 	exception.printStackTrace();
+		 }
+		 Index.showIndex();
 	}
 }
