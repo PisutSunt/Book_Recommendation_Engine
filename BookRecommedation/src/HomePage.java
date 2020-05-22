@@ -59,19 +59,19 @@ public class HomePage
 				showMainMenu();
 				break;
 			case 1:
-				ArrayList<Book> list = BookCollection.recommendByContent(currentUser);
+				ArrayList<Book> list1 = BookCollection.recommendByContent(currentUser);
 				System.out.println(
 						"------------------------------------------- Recommended books -------------------------------------------");
 				System.out.println("\t   Title\t\t\tAuthor\t\t\tGenre\t\t\tISBN");
-				for (int i = 0; i < list.size(); i++)
+				for (int i = 0; i < list1.size(); i++)
 				{
-					Book book = list.get(i);
+					Book book = list1.get(i);
 					System.out.printf("\t%d. %-28s %-23s %-23s %s\n", i + 1, book.getTitle(), book.getAuthor(),
 							book.getGenre(), book.getISBN());
 				}
 				
 				System.out.print("\nSelect a book number to see the detail (or type '0' to back to main menu).");
-				int selBook = IOUtils.checkInputMenu(0, list.size());
+				int selBook = IOUtils.checkInputMenu(0, list1.size());
 
 				if (selBook == 0)
 				{
@@ -79,12 +79,12 @@ public class HomePage
 				}
 				else
 				{
-					Book book = list.get(selBook-1);
+					Book book = list1.get(selBook-1);
 					seeBookDetail(book);
 				}
 				break;
 			case 2:
-				BookCollection.recommendByCommunity(currentUser);
+				ArrayList<Book> list2 = BookCollection.recommendByCommunity(currentUser);
 				break;
 			default:
 				break;
