@@ -149,16 +149,16 @@ public class HomePage
 		System.out.println(">>> View buying history...");
 
 		System.out.println("\tOrderNo.\tOrderDate\tTotalPrice");
-		ArrayList<Bill> bills = currentUser.getUserBillCollection();
+		BillCollection bills = currentUser.getUserBillCollection();
 		int index = 0;
-		for(Bill itr: bills)
-		{
-			index++;
-			System.out.print("\t" + index + ")" + itr.getBillNo());
-			System.out.print("\t" + itr.getOrderDate());
-			System.out.print("\t" + itr.getTotalPrice() + "Baht");
-			System.out.print("\n");
-		}
+//		for(ArrayList<Bill> itr: bills)
+//		{
+//			index++;
+//			System.out.print("\t" + index + ")" + itr.getBillNo());
+//			System.out.print("\t" + itr.getOrderDate());
+//			System.out.print("\t" + itr.getTotalPrice() + "Baht");
+//			System.out.print("\n");
+//		}
 	}
 	
 	public static void setCurrentUser(Profile user)
