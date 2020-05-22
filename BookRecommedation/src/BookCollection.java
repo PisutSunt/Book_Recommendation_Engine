@@ -66,4 +66,27 @@ public class BookCollection
         Collections.sort(recommendBookList);
         return recommendBookList;
     }
+
+    public static void addUserBuyBook(Profile user, ArrayList<Pair<Book, Integer>> itemList)
+    {
+        for (Pair<Book, Integer> item : itemList) 
+        {
+            Book book = item.getKey();
+            if (userListBuyBook.keySet().contains(book))
+            {
+                if (!userListBuyBook.get(book).contains(user))
+                {
+                    ArrayList<Profile> tempList = userListBuyBook.get(book);
+                    tempList.add(user);
+                    userListBuyBook.replace(book, tempList);
+                }
+            }
+            else
+            {
+                ArrayList<Profile> newUserList = new ArrayList<Profile>();
+                newUserList.add(user);
+                userListBuyBook.put(book, newUserList);
+            }
+        }
+    }
 }
