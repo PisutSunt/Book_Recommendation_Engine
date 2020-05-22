@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import javafx.util.Pair;
 
 public class HomePage
 {
@@ -20,6 +21,7 @@ public class HomePage
 		switch (selMenu)
 		{
 			case 0:
+				setCurrentUser(null);
 				Index.showIndex();
 				break;
 			case 1:
@@ -176,14 +178,41 @@ public class HomePage
 				viewCart();
 				break;
 			case 2:
-				break;
+				while (true)
+				{
+					currentUser.getCart().showAllBooksInCart();
+					if (currentUser.getCart().getSelectedBooks().isEmpty())
+						break;
+					System.out.print("\nEnter number of book that you want to remove ('0' for cancel)> ");
+					ArrayList<Pair<Book, Integer>> list = currentUser.getCart().getSelectedBooks();
+					int selBook = IOUtils.checkInputMenu(0, list.size());
+
+					if (selBook == 0)
+					{
+						viewCart();
+					}
+					else
+					{
+						currentUser.getCart().removeBookFromCart(list.get(selBook - 1));
+						continue;
+					}
+				}
+				viewCart();
 			case 3:
-				boolean bOk = currentUser.getCart().purchase(currentUser);
-				if (bOk)
-					System.out.println("*** Purchase complete ***");
+				currentUser.getCart().showAllBooksInCart();
+				if (currentUser.getCart().getSelectedBooks().isEmpty())
+				{
+					showMainMenu();					
+				}
 				else
-					System.out.println("*** Purchase incomplete!! ***");
-				showMainMenu();
+				{
+					boolean bOk = currentUser.getCart().purchase(currentUser);
+					if (bOk)
+						System.out.println("*** Purchase complete ***");
+					else
+						System.out.println("*** Purchase incomplete!! ***");
+					showMainMenu();
+				}
 				break;
 			default:
 				break;
