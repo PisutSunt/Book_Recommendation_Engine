@@ -1,15 +1,9 @@
-import java.util.ArrayList;
-import javafx.util.Pair;
 
 public class TestClass
 {
 	public static void main(String[] args) 
 	{
 		ProfileCollection.initialize();
-//		String[] genre = {"fun", "happy"};
-//		Profile p1 = new Profile("A", "email", "password", genre);
-//		Profile p2 = new Profile("B", "email", "password", genre);
-//		Profile p3 = new Profile("C", "email", "password", genre);
 		Book b1 = new Book("aaaaaaaaaaaaaaa", "Authoraaaaaaaaaaaa", "Education", 3, 10, "bookAbstract", 9, "1");
 		Book b2 = new Book("bbbbbbbbbbbbbbb", "Buthorrrrrrrrrrrrr", "Sci-Fi", 4, 20, "bookAbstract", 8, "2");
 		Book b3 = new Book("ccccccccccccccc", "Cuthorrrrrrrrrrrrr", "Comics", 4, 20, "bookAbstract", 8, "3");
