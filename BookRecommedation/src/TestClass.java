@@ -31,7 +31,7 @@ public class TestClass
 		// System.out.println(BookCollection.recommendByCommunity(p3));
 		 try
 		 {
-		 	IOUtils.WriteObjectToFile("..\\bookCollection", BookCollection.getBookCollection());
+		 	IOUtils.WriteObjectToFile("bookCollection", BookCollection.getBookCollection());
 		 }
 		 catch (Exception exception)
 		 {
