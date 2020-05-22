@@ -57,7 +57,7 @@ public class IOUtils
 				}
 				else
 				{
-					System.out.println("\t*** Please select between" + min + "-" + max + " ***");
+					System.out.println("\t*** Please select between " + min + "-" + max + " ***");
 					continue;
 				}
 			}
