@@ -81,6 +81,11 @@ public class Book implements Comparable<Book>, Serializable
 		return ISBN;
 	}
 
+	public void decreaseRemaining(int reducingNo)
+	{
+		remaining -= reducingNo;
+	}
+
 	@Override
 	public int compareTo(Book comingBook)
 	{

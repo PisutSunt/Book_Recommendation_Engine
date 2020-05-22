@@ -87,15 +87,21 @@ public class Cart implements Serializable
         }
     }
 
-    public void purchase(Profile buyer)
+    public boolean purchase(Profile buyer)
     {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("\t*** Fill delivery information ***");
-        System.out.print("Receiver name: ");
-        String receiver = scanner.nextLine();
-        System.out.print("Address: ");
-        String shippingAddress = scanner.nextLine();
-        BillManager.createBill(buyer, selectedBooks, receiver, shippingAddress, totalPrice);
-        scanner.close();
+        if (BookCollection.isBookEnough(selectedBooks) && PaypalAdapter.pay())
+        {
+            BookCollection.decreaseRemainingBooks(selectedBooks);
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("\t*** Fill delivery information ***");
+            System.out.print("Receiver name: ");
+            String receiver = scanner.nextLine();
+            System.out.print("Address: ");
+            String shippingAddress = scanner.nextLine();
+            BillManager.createBill(buyer, selectedBooks, receiver, shippingAddress, totalPrice);
+            scanner.close();
+            return true;
+        }
+        return false;
     }
 }
