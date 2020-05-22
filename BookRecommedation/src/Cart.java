@@ -98,14 +98,12 @@ public class Cart implements Serializable
         if (BookCollection.isBookEnough(selectedBooks) && PaypalAdapter.pay())
         {
             BookCollection.decreaseRemainingBooks(selectedBooks);
-            Scanner scanner = new Scanner(System.in);
             System.out.println("\t*** Fill delivery information ***");
-            System.out.print("Receiver name: ");
-            String receiver = scanner.nextLine();
-            System.out.print("Address: ");
-            String shippingAddress = scanner.nextLine();
+            System.out.print("Receiver name> ");
+            String receiver = IOUtils.getString();
+            System.out.print("Address> ");
+            String shippingAddress = IOUtils.getString();
             BillManager.createBill(buyer, selectedBooks, receiver, shippingAddress, totalPrice);
-            scanner.close();
             return true;
         }
         return false;

@@ -137,6 +137,7 @@ public class HomePage
 		case 2:
 			break;
 		case 3:
+			currentUser.getCart().purchase(currentUser);
 			break;
 		default:
 			break;
