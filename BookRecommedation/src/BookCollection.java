@@ -37,6 +37,7 @@ public class BookCollection
                 .stream()
                 .filter(s -> s.contains("_" + genre + "_"))
                 .collect(Collectors.toSet());
+            
             for (String key : keyBookSet) 
                 recommendBooks.add(bookCollection.get(key));
         }
@@ -99,22 +100,9 @@ public class BookCollection
 		List<String> list = bookCollection.keySet().stream().filter(s -> s.contains(keywords))
 				.collect(Collectors.toList());
 		if(list.isEmpty())
-		{
 			return null;
-		}
 		else
-		{
-			System.out.println("\t   Title\t\t\tAuthor\t\t\tGenre\t\t\tISBN");
-			int index = 1;
-			for (String key : list)
-			{
-				Book book = bookCollection.get(key);
-				System.out.printf("\t%d. %-28s %-23s %-23s %s\n", index, book.getTitle(), book.getAuthor(), book.getGenre(), book.getISBN());
-				index++;
-			}
-			
 			return list;
-		}
     }
     
     public static boolean isBookEnough(ArrayList<Pair<Book,Integer>> items)

@@ -13,9 +13,9 @@ public class Login
 		{
 			
 			System.out.print("Enter username> ");
-			String userName = IOUtils.getString();
+			userName = IOUtils.getString();
 			System.out.print("Enter password> ");
-			String password = IOUtils.getString();
+			password = IOUtils.getString();
 			
 			if(ProfileCollection.isUserNameExisted(userName))
 			{
