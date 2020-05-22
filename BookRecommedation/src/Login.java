@@ -19,11 +19,18 @@ public class Login
 			System.out.print("Enter password> ");
 			password = sc.nextLine();
 			
-			if(userName.equals("admin") && password.equals("root"))
+			if(ProfileCollection.isUserNameExisted(userName))
 			{
-				System.out.println("\n*** Login success! ***");
-				break;
-				
+				if(password.equals(ProfileCollection.getProfile(userName).getPassword()))
+				{
+					System.out.println("\n*** Login success! ***");
+					break;
+				}
+				else
+				{
+					System.out.println("\n*** Username or Password incorrect! ***\n");
+					continue;
+				}
 			}
 			else
 			{
@@ -32,7 +39,8 @@ public class Login
 			}
 		
 		}
-//		HomePage.setCurrentUser(ProfileCollection.getProfile(userName));
+		
+		HomePage.setCurrentUser(ProfileCollection.getProfile(userName));
 		HomePage.showMainMenu();
 		
 	}

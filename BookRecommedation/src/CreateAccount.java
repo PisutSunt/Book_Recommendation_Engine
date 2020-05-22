@@ -18,14 +18,22 @@ public class CreateAccount
 		{
 			System.out.print("Enter email> ");
 			email = sc.nextLine();
-			if(ProfileCollection.isEmailAlreadyUsed(email))
+			if(ProfileCollection.isValidEmailAddress(email))
 			{
-				System.out.println("\t*** This email is already used! ***");
-				continue;
+				if(ProfileCollection.isEmailAlreadyUsed(email))
+				{
+					System.out.println("*** This email is already used! ***");
+					continue;
+				}
+				else
+				{
+					break;
+				}
 			}
 			else
 			{
-				break;
+				System.out.println("*** Invalid format! ***");
+				continue;
 			}
 		}
 		
@@ -98,6 +106,7 @@ public class CreateAccount
 			{
 				Profile profile = new Profile(userName, email, password, userGenre);
 				ProfileCollection.addUser(profile.getUserName(), profile);
+				ProfileCollection.updateFile();
 				System.out.println("\n\t*** Create account success! ***\n");
 				Index.showIndex();
 				break;
