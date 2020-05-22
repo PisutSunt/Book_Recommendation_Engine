@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class Book implements Serializable
+public class Book implements Comparable<Book>, Serializable
 {
 	/**
 	 *
@@ -79,5 +79,11 @@ public class Book implements Serializable
 	public String getISBN()
 	{
 		return ISBN;
+	}
+
+	@Override
+	public int compareTo(Book comingBook)
+	{
+		return comingBook.getTotalBought() - this.totalBought;
 	}
 }
