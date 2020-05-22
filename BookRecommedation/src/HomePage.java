@@ -8,7 +8,7 @@ public class HomePage
 	{
 
 		System.out.println("\n------------------ Main menu ------------------");
-		System.out.println("\t1. Request recommendations (based on your interested genres).");
+		System.out.println("\t1. Request recommendations.");
 		System.out.println("\t2. See best seller.");
 		System.out.println("\t3. Search for the books.");
 		System.out.println("\t4. View your cart.");
@@ -19,26 +19,26 @@ public class HomePage
 
 		switch (selMenu)
 		{
-		case 0:
-			Index.showIndex();
-			break;
-		case 1:
-			requestRecommendation();
-			break;
-		case 2:
-			seeBestSeller();
-			break;
-		case 3:
-			searchBooks();
-			break;
-		case 4:
-			viewCart();
-			break;
-		case 5:
-			viewBuyingHistory();
-			break;
-		default:
-			break;
+			case 0:
+				Index.showIndex();
+				break;
+			case 1:
+				requestRecommendation();
+				break;
+			case 2:
+				seeBestSeller();
+				break;
+			case 3:
+				searchBooks();
+				break;
+			case 4:
+				viewCart();
+				break;
+			case 5:
+				viewBuyingHistory();
+				break;
+			default:
+				break;
 		}
 
 	}
@@ -46,6 +46,29 @@ public class HomePage
 	private static void requestRecommendation()
 	{
 		System.out.println(">>> Request recommendations...");
+		System.out.println("\t1. Based on your interested genres.");
+		System.out.println("\t2. Based on community.");
+		System.out.println("\t0. Back to Main menu.");
+
+		int selMenu = IOUtils.checkInputMenu(0, 2);
+
+		switch (selMenu)
+		{
+			case 0:
+				showMainMenu();
+				break;
+			case 1:
+				currentUser.getCart().showAllBooksInCart();
+				viewCart();
+				break;
+			case 2:
+				break;
+			case 3:
+				currentUser.getCart().purchase(currentUser);
+				break;
+			default:
+				break;
+		}
 	}
 
 	private static void seeBestSeller()
@@ -92,7 +115,7 @@ public class HomePage
 						currentUser.getCart().showAllBooksInCart();
 						showMainMenu();
 						break;
-						
+
 					}
 					else if (ans.equals("N"))
 					{
@@ -104,7 +127,7 @@ public class HomePage
 						continue;
 					}
 				}
-				
+
 			}
 		}
 		else
@@ -127,20 +150,20 @@ public class HomePage
 
 		switch (selMenu)
 		{
-		case 0:
-			showMainMenu();
-			break;
-		case 1:
-			currentUser.getCart().showAllBooksInCart();
-			viewCart();
-			break;
-		case 2:
-			break;
-		case 3:
-			currentUser.getCart().purchase(currentUser);
-			break;
-		default:
-			break;
+			case 0:
+				showMainMenu();
+				break;
+			case 1:
+				currentUser.getCart().showAllBooksInCart();
+				viewCart();
+				break;
+			case 2:
+				break;
+			case 3:
+				currentUser.getCart().purchase(currentUser);
+				break;
+			default:
+				break;
 		}
 
 	}

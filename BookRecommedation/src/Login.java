@@ -1,8 +1,6 @@
-import java.util.Scanner;
 
 public class Login
 {
-	private static Scanner sc = new Scanner(System.in);
 	private static String userName;
 	private static String password;
 	
@@ -15,9 +13,9 @@ public class Login
 		{
 			
 			System.out.print("Enter username> ");
-			userName = sc.nextLine();
+			String userName = IOUtils.getString();
 			System.out.print("Enter password> ");
-			password = sc.nextLine();
+			String password = IOUtils.getString();
 			
 			if(ProfileCollection.isUserNameExisted(userName))
 			{
