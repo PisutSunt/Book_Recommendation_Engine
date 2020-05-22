@@ -10,10 +10,9 @@ public class HomePage
 
 		System.out.println("\n------------------ Main menu ------------------");
 		System.out.println("\t1. Request recommendations.");
-		System.out.println("\t2. See best seller.");
-		System.out.println("\t3. Search for the books.");
-		System.out.println("\t4. View your cart.");
-		System.out.println("\t5. View buying history.");
+		System.out.println("\t2. Search for the books.");
+		System.out.println("\t3. View your cart.");
+		System.out.println("\t4. View buying history.");
 		System.out.println("\t0. Back to welcome page.");
 
 		int selMenu = IOUtils.checkInputMenu(0, 5);
@@ -27,17 +26,13 @@ public class HomePage
 				requestRecommendation();
 				break;
 			case 2:
-				seeBestSeller();
-				break;
-			case 3:
 				searchBooks();
 				break;
-			case 4:
+			case 3:
 				viewCart();
 				break;
-			case 5:
+			case 4:
 				viewBuyingHistory();
-				showMainMenu();
 				break;
 			default:
 				break;
@@ -70,34 +65,56 @@ public class HomePage
 					System.out.printf("\t%d. %-28s %-23s %-23s %s\n", i + 1, book.getTitle(), book.getAuthor(),
 							book.getGenre(), book.getISBN());
 				}
-				
-				System.out.print("\nSelect a book number to see the detail (or type '0' to back to main menu).");
-				int selBook = IOUtils.checkInputMenu(0, list1.size());
 
-				if (selBook == 0)
+				System.out.print("\nSelect a book number to see the detail (or type '0' to back to main menu).");
+				int selBook1 = IOUtils.checkInputMenu(0, list1.size());
+
+				if (selBook1 == 0)
 				{
 					showMainMenu();
 				}
 				else
 				{
-					Book book = list1.get(selBook-1);
+					Book book = list1.get(selBook1 - 1);
 					seeBookDetail(book);
 				}
 				break;
 			case 2:
 				ArrayList<Book> list2 = BookCollection.recommendByCommunity(currentUser);
-				System.out.println(
-						"------------------------------------------- Recommended books -------------------------------------------");
-				System.out.println("\t   Title\t\t\tAuthor\t\t\tGenre\t\t\tISBN");
+				if (list2 == null)
+				{
+					System.out.println("\t*** You need to buy something first to join community! ***");
+					showMainMenu();
+				}
+				else
+				{
+					System.out.println(
+							"------------------------------------------- Recommended books -------------------------------------------");
+					System.out.println("\t   Title\t\t\tAuthor\t\t\tGenre\t\t\tISBN");
+					for (int i = 0; i < list2.size(); i++)
+					{
+						Book book = list2.get(i);
+						System.out.printf("\t%d. %-28s %-23s %-23s %s\n", i + 1, book.getTitle(), book.getAuthor(),
+								book.getGenre(), book.getISBN());
+					}
+
+					System.out.print("\nSelect a book number to see the detail (or type '0' to back to main menu).");
+					int selBook2 = IOUtils.checkInputMenu(0, list2.size());
+
+					if (selBook2 == 0)
+					{
+						showMainMenu();
+					}
+					else
+					{
+						Book book = list2.get(selBook2 - 1);
+						seeBookDetail(book);
+					}
+				}
 				break;
 			default:
 				break;
 		}
-	}
-
-	private static void seeBestSeller()
-	{
-		System.out.println(">>> See best seller...");
 	}
 
 	private static void searchBooks()
@@ -139,6 +156,66 @@ public class HomePage
 
 	}
 
+	private static void viewCart()
+	{
+		System.out.println(">>> View your cart...");
+		System.out.println("\t1. Show all books in the cart.");
+		System.out.println("\t2. Remove a book in the cart.");
+		System.out.println("\t3. Make purchase.");
+		System.out.println("\t0. Back to Main menu.");
+
+		int selMenu = IOUtils.checkInputMenu(0, 3);
+
+		switch (selMenu)
+		{
+			case 0:
+				showMainMenu();
+				break;
+			case 1:
+				currentUser.getCart().showAllBooksInCart();
+				viewCart();
+				break;
+			case 2:
+				break;
+			case 3:
+				boolean bOk = currentUser.getCart().purchase(currentUser);
+				if (bOk)
+					System.out.println("*** Purchase complete ***");
+				else
+					System.out.println("*** Purchase incomplete!! ***");
+				showMainMenu();
+				break;
+			default:
+				break;
+		}
+
+	}
+
+	private static void viewBuyingHistory()
+	{
+		System.out.println(">>> View buying history...");
+
+		BillCollection bills = BillManager.findBillCollection(currentUser);
+		if (bills == null)
+		{
+			System.out.println("\t*** You need to buy something first! ***");
+			showMainMenu();
+		}
+		else
+		{
+			int index = 0;
+			System.out.println("\t   BillNo.\t\t\tOrderDate\t\t\tTotalPrice");
+			for (Bill itr : bills.getBillCollection())
+			{
+				index++;
+				System.out.printf("\t%d. %-28s %-31s %s baht\n", index, itr.getBillNo(), itr.getOrderDate(),
+						itr.getTotalPrice());
+			}
+			showMainMenu();
+		}
+
+	}
+
 	private static void seeBookDetail(Book book)
 	{
 
@@ -175,61 +252,6 @@ public class HomePage
 			}
 		}
 
-	}
-
-	private static void viewCart()
-	{
-		System.out.println(">>> View your cart...");
-		System.out.println("\t1. Show all books in the cart.");
-		System.out.println("\t2. Remove a book in the cart.");
-		System.out.println("\t3. Make purchase.");
-		System.out.println("\t0. Back to Main menu.");
-
-		int selMenu = IOUtils.checkInputMenu(0, 3);
-
-		switch (selMenu)
-		{
-			case 0:
-				showMainMenu();
-				break;
-			case 1:
-				currentUser.getCart().showAllBooksInCart();
-				viewCart();
-				break;
-			case 2:
-				break;
-			case 3:
-				boolean bOk = currentUser.getCart().purchase(currentUser);
-				if(bOk)
-					System.out.println("*** Purchase complete ***");
-				else
-					System.out.println("*** Purchase incomplete!! ***");
-				showMainMenu();
-				break;
-			default:
-				break;
-		}
-
-	}
-
-	private static void viewBuyingHistory()
-	{
-		System.out.println(">>> View buying history...");
-
-		BillCollection bills = BillManager.findBillCollection(currentUser);
-		if(bills == null)
-		{
-			System.out.println("\t*** You need to buy something first! ***");
-			showMainMenu();
-		}
-		int index = 0;
-		System.out.println("\t   BillNo.\t\t\tOrderDate\t\t\tTotalPrice");
-		for(Bill itr: bills.getBillCollection())
-		{
-			index++;
-			System.out.printf("\t%d. %-28s %-31s %s baht\n", index, itr.getBillNo(), itr.getOrderDate(),
-					itr.getTotalPrice());
-		}
 	}
 
 	public static void setCurrentUser(Profile user)

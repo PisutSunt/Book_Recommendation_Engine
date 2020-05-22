@@ -75,9 +75,8 @@ public class BookCollection
         }
         else
         {
-        	System.out.println("\t*** You need to buy something first to join community! ***");
+        	return null;        	
         }
-        return null;
     }
 
     public static void addUserBuyBook(Profile user, ArrayList<Pair<Book, Integer>> itemList)
