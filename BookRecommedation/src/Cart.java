@@ -87,7 +87,7 @@ public class Cart implements Serializable
         }
     }
 
-    public void purchase()
+    public void purchase(Profile buyer)
     {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\t*** Fill delivery information ***");
@@ -95,8 +95,7 @@ public class Cart implements Serializable
         String receiver = scanner.nextLine();
         System.out.print("Address: ");
         String shippingAddress = scanner.nextLine();
-        // BillManager.createBill(buyer, selectedBooks, receiver, shippingAddress, totalPrice);
-        // update billCollection ที่ Profile ด้วย
+        BillManager.createBill(buyer, selectedBooks, receiver, shippingAddress, totalPrice);
         scanner.close();
     }
 }
