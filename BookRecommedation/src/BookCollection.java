@@ -47,14 +47,14 @@ public class BookCollection
 
     public static ArrayList<Book> recommendByCommunity(Profile user)
     {
-        if (BillManager.findBillCollection(user).getBillCollection().size() != 0)
+        if (BillManager.findBillCollection(user) != null)
         {
             ArrayList<Book> recommendBookList = new ArrayList<Book>();
             Set<Book> recommendBookSet = new LinkedHashSet<Book>();
             Set<Profile> communitySet = new LinkedHashSet<Profile>();
             System.out.println();
-            ArrayList<Pair<Book, Integer>> latestItems = user.getUserBillCollection().getBillCollection()
-                        .get(user.getUserBillCollection().getBillCollection().size() - 1).getBoughtBooks();
+            ArrayList<Pair<Book, Integer>> latestItems = BillManager.findBillCollection(user).getBillCollection()
+                        .get(BillManager.findBillCollection(user).getBillCollection().size() - 1).getBoughtBooks();
             for (Pair<Book, Integer> item : latestItems)
             {
                 Book tempBook = item.getKey();
@@ -62,8 +62,8 @@ public class BookCollection
             }
             for (Profile tempUser : communitySet) 
             {
-                for (Pair<Book, Integer> item : tempUser.getUserBillCollection().getBillCollection()
-                    .get(tempUser.getUserBillCollection().getBillCollection().size() - 1).getBoughtBooks()) 
+                for (Pair<Book, Integer> item : BillManager.findBillCollection(tempUser).getBillCollection()
+                        .get(BillManager.findBillCollection(tempUser).getBillCollection().size() - 1).getBoughtBooks())
                 {
                     if (!userListBuyBook.get(item.getKey().getKeywords()).contains(user))
                         recommendBookSet.add(item.getKey());
@@ -72,6 +72,10 @@ public class BookCollection
             recommendBookList.addAll(recommendBookSet);
             Collections.sort(recommendBookList);
             return recommendBookList;
+        }
+        else
+        {
+        	System.out.println("\t*** You need to buy something first to join community! ***");
         }
         return null;
     }

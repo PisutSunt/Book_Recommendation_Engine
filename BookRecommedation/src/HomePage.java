@@ -37,6 +37,7 @@ public class HomePage
 				break;
 			case 5:
 				viewBuyingHistory();
+				showMainMenu();
 				break;
 			default:
 				break;
@@ -195,7 +196,12 @@ public class HomePage
 			case 2:
 				break;
 			case 3:
-				currentUser.getCart().purchase(currentUser);
+				boolean bOk = currentUser.getCart().purchase(currentUser);
+				if(bOk)
+					System.out.println("*** Purchase complete ***");
+				else
+					System.out.println("*** Purchase incomplete!! ***");
+				showMainMenu();
 				break;
 			default:
 				break;
@@ -207,17 +213,20 @@ public class HomePage
 	{
 		System.out.println(">>> View buying history...");
 
-		System.out.println("\tOrderNo.\tOrderDate\tTotalPrice");
-		BillCollection bills = currentUser.getUserBillCollection();
+		BillCollection bills = BillManager.findBillCollection(currentUser);
+		if(bills == null)
+		{
+			System.out.println("\t*** You need to buy something first! ***");
+			showMainMenu();
+		}
 		int index = 0;
-//		for(ArrayList<Bill> itr: bills)
-//		{
-//			index++;
-//			System.out.print("\t" + index + ")" + itr.getBillNo());
-//			System.out.print("\t" + itr.getOrderDate());
-//			System.out.print("\t" + itr.getTotalPrice() + "Baht");
-//			System.out.print("\n");
-//		}
+		System.out.println("\t   BillNo.\t\t\tOrderDate\t\t\tTotalPrice");
+		for(Bill itr: bills.getBillCollection())
+		{
+			index++;
+			System.out.printf("\t%d. %-28s %-31s %s baht\n", index, itr.getBillNo(), itr.getOrderDate(),
+					itr.getTotalPrice());
+		}
 	}
 
 	public static void setCurrentUser(Profile user)

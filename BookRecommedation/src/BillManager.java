@@ -16,8 +16,8 @@ public class BillManager
     public static void createBill(Profile buyer, ArrayList<Pair<Book, Integer>> boughtBooks, 
                             String receiver, String shippingAddress, float totalPrice)
     {
+    	billCounter++;
         Bill newBill = new Bill(billCounter, buyer, boughtBooks, receiver, shippingAddress, totalPrice);
-        buyer.updateBillCollection(newBill);
         if (allBillCollection.contains(buyer))
         {
             BillCollection billCollection = allBillCollection.get(buyer);
@@ -30,6 +30,6 @@ public class BillManager
             billCollection.addBill(newBill);
             allBillCollection.put(buyer, billCollection);
         }
-        billCounter++;
+       
     }
 }
