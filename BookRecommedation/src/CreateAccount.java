@@ -1,8 +1,6 @@
-import java.util.Scanner;
 
 public class CreateAccount
 {
-	private static Scanner sc = new Scanner(System.in);
 	private static String[] Genres = {"Education", "Sci-Fi", "Adventure", "Romance", "History"
 										, "Biography", "Comics", "Mystery", "Technology", "Business", "Language", "Fantasy", "Horror"};
 	private static String userName;
@@ -17,7 +15,7 @@ public class CreateAccount
 		while(true)
 		{
 			System.out.print("Enter email> ");
-			email = sc.nextLine();
+			email = IOUtils.getString();
 			if(ProfileCollection.isValidEmailAddress(email))
 			{
 				if(ProfileCollection.isEmailAlreadyUsed(email))
@@ -40,7 +38,7 @@ public class CreateAccount
 		while(true)
 		{
 			System.out.print("Enter username> ");
-			userName = sc.nextLine();
+			userName = IOUtils.getString();
 			if(ProfileCollection.isUserNameExisted(userName))
 			{
 				System.out.println("\t*** This username is already used! ***");
@@ -57,7 +55,7 @@ public class CreateAccount
 			while(true)
 			{
 				System.out.print("Enter password> ");
-				password = sc.nextLine();
+				password = IOUtils.getString();
 				if(password.length() < 6)
 				{
 					System.out.println("\t*** Password is too short! ***");					
@@ -68,7 +66,7 @@ public class CreateAccount
 				}
 			}
 			System.out.print("Confirm password> ");
-			String confPass = sc.nextLine();
+			String confPass = IOUtils.getString();
 			if(password.equals(confPass))
 			{
 				break;
@@ -101,7 +99,7 @@ public class CreateAccount
 		while(true)
 		{
 			System.out.print("Confirm to create account (Y/N)?> ");
-			String ans = sc.next();
+			String ans = IOUtils.getString();
 			if(ans.equals("Y"))
 			{
 				Profile profile = new Profile(userName, email, password, userGenre);

@@ -1,7 +1,4 @@
-import java.util.ArrayList;
 import java.util.List;
-
-import javafx.util.Pair;
 
 public class HomePage
 {
@@ -54,7 +51,6 @@ public class HomePage
 	private static void seeBestSeller()
 	{
 		System.out.println(">>> See best seller...");
-
 	}
 
 	private static void searchBooks()
