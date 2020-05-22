@@ -36,5 +36,25 @@ public class BillManager implements Serializable
             billCollection.addBill(newBill);
             allBillCollection.put(buyer, billCollection);
         }
+//        updateFile();
     }
+    
+    public static void initialize()
+    {
+    	try
+		{
+    		allBillCollection = (Hashtable<Profile, BillCollection>)IOUtils.ReadObjectFromFile("billCollection");
+		}
+		catch (Exception exception)
+		{
+			exception.printStackTrace();
+		}
+    }
+    
+    public static void updateFile()
+    {
+    	IOUtils.WriteObjectToFile("billCollection", (Hashtable<Profile, BillCollection>)allBillCollection);
+    }
+    
+    
 }

@@ -132,4 +132,23 @@ public class BookCollection
                 .getKeywords()), tempBook);
         }
     }
+    
+    public static void initialize()
+    {
+    	try
+		{
+    		bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile("bookCollection");
+		}
+		catch (Exception exception)
+		{
+			exception.printStackTrace();
+		}
+    }
+    
+    public static void updateFile()
+    {
+    	IOUtils.WriteObjectToFile("bookCollection", (Hashtable<String, Book>)bookCollection);
+    }
+
+    
 }

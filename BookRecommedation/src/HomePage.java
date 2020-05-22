@@ -208,9 +208,10 @@ public class HomePage
 				{
 					boolean bOk = currentUser.getCart().purchase(currentUser);
 					if (bOk)
-						System.out.println("*** Purchase complete ***");
+						System.out.print("\t*** Purchase complete ***");
 					else
-						System.out.println("*** Purchase incomplete!! ***");
+						System.out.print("\t*** Purchase incomplete!! ***");
+					
 					showMainMenu();
 				}
 				break;
