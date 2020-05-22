@@ -80,6 +80,6 @@ public class Cart implements Serializable
         String receiver = scanner.nextLine();
         System.out.print("Address: ");
         String shippingAddress = scanner.nextLine();
-        BillManager.createBill(buyer, selectedBooks, receiver, shippingAddress, totalPrice);
+        // BillManager.createBill(buyer, selectedBooks, receiver, shippingAddress, totalPrice);
     }
 }
