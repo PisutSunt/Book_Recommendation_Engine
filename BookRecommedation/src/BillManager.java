@@ -1,13 +1,18 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import javafx.util.Pair;
 /**
  * 
  */
-public class BillManager 
+public class BillManager implements Serializable
 {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 6517082982239447106L;
     private static Hashtable<Profile, BillCollection> allBillCollection = new Hashtable<Profile, BillCollection>();
-    private static int billCounter = 0;
+    private static int billCounter = 1;
 
     public static BillCollection findBillCollection(Profile user)
     {
