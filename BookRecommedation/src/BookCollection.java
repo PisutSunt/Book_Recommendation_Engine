@@ -5,13 +5,12 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javafx.util.Pair;
 
 public class BookCollection
 {
     public static Hashtable<String, Book> bookCollection = new Hashtable<String, Book>();
-    private static Hashtable<Book, ArrayList<Profile>> userListBuyBook = new Hashtable<Book, ArrayList<Profile>>();
+    private static Hashtable<String, ArrayList<Profile>> userListBuyBook = new Hashtable<String, ArrayList<Profile>>();
 
 	public static Book getBook(String keyword)
 	{
@@ -56,14 +55,15 @@ public class BookCollection
         for (Pair<Book, Integer> item : latestItems)
         {
             Book tempBook = item.getKey();
-            communitySet.addAll(userListBuyBook.get(tempBook));
+            communitySet.addAll(userListBuyBook.get(tempBook.getKeywords()));
         }
         for (Profile tempUser : communitySet) 
         {
             for (Pair<Book, Integer> item : tempUser.getUserBillCollection().getBillCollection()
                 .get(tempUser.getUserBillCollection().getBillCollection().size() - 1).getBoughtBooks()) 
             {
-                recommendBookSet.add(item.getKey());
+                if (!userListBuyBook.get(item.getKey().getKeywords()).contains(user))
+                    recommendBookSet.add(item.getKey());
             }
         }
         recommendBookList.addAll(recommendBookSet);
@@ -76,20 +76,20 @@ public class BookCollection
         for (Pair<Book, Integer> item : itemList) 
         {
             Book book = item.getKey();
-            if (userListBuyBook.keySet().contains(book))
+            if (userListBuyBook.keySet().contains(book.getKeywords()))
             {
-                if (!userListBuyBook.get(book).contains(user))
+                if (!userListBuyBook.get(book.getKeywords()).contains(user))
                 {
-                    ArrayList<Profile> tempList = userListBuyBook.get(book);
+                    ArrayList<Profile> tempList = userListBuyBook.get(book.getKeywords());
                     tempList.add(user);
-                    userListBuyBook.replace(book, tempList);
+                    userListBuyBook.replace(book.getKeywords(), tempList);
                 }
             }
             else
             {
                 ArrayList<Profile> newUserList = new ArrayList<Profile>();
                 newUserList.add(user);
-                userListBuyBook.put(book, newUserList);
+                userListBuyBook.put(book.getKeywords(), newUserList);
             }
         }
     }
@@ -115,8 +115,26 @@ public class BookCollection
 			
 			return list;
 		}
-		
-	}
-	
-	
+    }
+    
+    public static boolean isBookEnough(ArrayList<Pair<Book,Integer>> items)
+    {
+        for (Pair<Book,Integer> item : items) 
+        {
+            if (item.getKey().getRemaining() < item.getValue())
+                return false;
+        }
+        return true;
+    }
+
+    public static void decreaseRemainingBooks(ArrayList<Pair<Book,Integer>> items)
+    {
+        for (Pair<Book,Integer> item : items) 
+        {
+            Book tempBook = bookCollection.get(item.getKey().getKeywords());
+            tempBook.decreaseRemaining(item.getValue());
+            bookCollection.replace(tempBook.getKeywords(), bookCollection.get(item.getKey()
+                .getKeywords()), tempBook);
+        }
+    }
 }
