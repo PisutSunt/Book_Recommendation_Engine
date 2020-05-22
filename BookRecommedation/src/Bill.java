@@ -10,7 +10,7 @@ public class Bill
     private String receiver;
     private String shippingAddress;
     private float totalPrice;
-    private Date date;
+    private Date orderDate;
 
     public Bill(int billNo, Profile buyer, ArrayList<Pair<Book, Integer>> boughtBooks, String receiver, 
             String shippingAddress, float totalPrice)
@@ -21,11 +21,41 @@ public class Bill
         this.receiver = receiver;
         this.shippingAddress = shippingAddress;
         this.totalPrice = totalPrice;
-        date = new Date();
+        orderDate = new Date();
     }
 
     public int getBillNo()
     {
         return billNo;
+    }
+    
+    public Profile getBuyer()
+    {
+    	return buyer;
+    }
+    
+    public ArrayList<Pair<Book, Integer>> getBoughtBooks()
+    {
+    	return boughtBooks;
+    }
+    
+    public String getReceiver()
+    {
+    	return receiver;
+    }
+    
+    public String getShippingAddress()
+    {
+    	return shippingAddress;
+    }
+    
+    public float getTotalPrice()
+    {
+    	return totalPrice;
+    }
+    
+    public Date getOrderDate()
+    {
+    	return orderDate;
     }
 }

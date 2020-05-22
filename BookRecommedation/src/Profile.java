@@ -47,7 +47,7 @@ public class Profile implements Serializable
 		return cart;
 	}
 
-	public ArrayList<Bill> getBill()
+	public ArrayList<Bill> getUserBillCollection()
 	{
 		return null;
 	}
