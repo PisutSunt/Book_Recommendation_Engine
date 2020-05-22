@@ -12,7 +12,7 @@ public class Profile implements Serializable
 	private String password;
 	private String[] interestedGenre = new String[5];
 	private Cart cart = new Cart();
-	// private BillCollection userBills = new BillCollection();
+	private BillCollection userBills = new BillCollection();
 
 	public Profile(String userName, String email, String password, String[] genre)
 	{
@@ -47,8 +47,13 @@ public class Profile implements Serializable
 		return cart;
 	}
 
-	public ArrayList<Bill> getUserBillCollection()
+	public BillCollection getUserBillCollection()
 	{
-		return null;
+		return userBills;
+	}
+
+	public void updateBillCollection(Bill bill)
+	{
+		this.userBills.addBill(bill);
 	}
 }

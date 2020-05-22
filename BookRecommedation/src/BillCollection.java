@@ -7,7 +7,7 @@ public class BillCollection implements Serializable
      *
      */
     private static final long serialVersionUID = -8532049033326057555L;
-    private ArrayList<Bill> billCollection;
+    private ArrayList<Bill> billCollection = new ArrayList<Bill>();
 
     public ArrayList<Bill> getBillCollection()
     {
@@ -18,7 +18,7 @@ public class BillCollection implements Serializable
     {
         try
         {
-            billCollection.add(bill);
+            this.billCollection.add(bill);
         }
         catch (Exception exception)
         {

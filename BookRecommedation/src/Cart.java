@@ -72,6 +72,21 @@ public class Cart implements Serializable
         return true;
     }
 
+    public void showAllBooksInCart()
+    {
+        if (selectedBooks != null)
+        {
+            for (Pair<Book, Integer> pair : selectedBooks)
+            {
+                System.out.println(pair.toString());
+            }
+        }
+        else
+        {
+            System.out.println("*** Your cart is empty! ***");
+        }
+    }
+
     public void purchase()
     {
         Scanner scanner = new Scanner(System.in);
@@ -81,5 +96,7 @@ public class Cart implements Serializable
         System.out.print("Address: ");
         String shippingAddress = scanner.nextLine();
         // BillManager.createBill(buyer, selectedBooks, receiver, shippingAddress, totalPrice);
+        // update billCollection ที่ Profile ด้วย
+        scanner.close();
     }
 }

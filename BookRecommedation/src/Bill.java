@@ -28,6 +28,7 @@ public class Bill
     {
         return billNo;
     }
+<<<<<<< HEAD
     
     public Profile getBuyer()
     {
@@ -57,5 +58,11 @@ public class Bill
     public Date getOrderDate()
     {
     	return orderDate;
+=======
+
+    public ArrayList<Pair<Book, Integer>> getBoughtBooks()
+    {
+        return boughtBooks;
+>>>>>>> 76dcaceb9baa1d7680da51db9321b384804e363a
     }
 }
