@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
-
 import javafx.util.Pair;
-
+/**
+ * 
+ */
 public class BillManager 
 {
     private static Hashtable<Profile, BillCollection> allBillCollection = new Hashtable<Profile, BillCollection>();
@@ -16,7 +17,7 @@ public class BillManager
     public static void createBill(Profile buyer, ArrayList<Pair<Book, Integer>> boughtBooks, 
                             String receiver, String shippingAddress, float totalPrice)
     {
-    	billCounter++;
+        billCounter++;
         Bill newBill = new Bill(billCounter, buyer, boughtBooks, receiver, shippingAddress, totalPrice);
         if (allBillCollection.contains(buyer))
         {
@@ -30,7 +31,5 @@ public class BillManager
             billCollection.addBill(newBill);
             allBillCollection.put(buyer, billCollection);
         }
-       
     }
-    
 }
