@@ -1,4 +1,10 @@
-
+/**
+ * The class CreatingAccount represents register form for 
+ * new user who want to be the member of the book store.
+ * 
+ * Created by Pisut Suntronkiti  ID: 60070501037
+ *            Wuttithat Krongyot ID: 60070501084
+ */
 public class CreatingAccount
 {
 	private static String[] Genres = { "Education", "Sci-Fi", "Adventure", "Romance", "History", "Biography", "Comics",

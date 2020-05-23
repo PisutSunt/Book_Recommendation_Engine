@@ -14,25 +14,46 @@ import javafx.util.Pair;
  */
 public class BookCollection
 {
+    /** keep all of book with the book's keyword as the key of hash table */
     public static Hashtable<String, Book> bookCollection = new Hashtable<String, Book>();
+
+    /** list of user who have bought the key book */
     private static Hashtable<String, ArrayList<Profile>> userListBuyBook = new Hashtable<String, ArrayList<Profile>>();
 
+    /**
+     * book getter method by its keyword
+     * @param keyword keyword of the book
+     * @return the target book
+     */
 	public static Book getBook(String keyword)
 	{
 		return bookCollection.get(keyword);
 	}
 
+    /**
+     * add a new book to the collection
+     * @param book a new book
+     */
 	public static void addBook(Book book)
 	{
 		bookCollection.put(book.getKeywords(), book);
 		updateFileBookCollection();
 	}
 
+    /**
+     * bookCollection getter method
+     * @return book collection
+     */
     public static Hashtable<String, Book> getBookCollection()
     {
         return bookCollection;
     }
 
+    /**
+     * recommedation process for user based on the content (genre/category)
+     * @param user user in Profile type
+     * @return a list of recommended books
+     */
     public static ArrayList<Book> recommendByContent(Profile user)
     {
         String[] userGenre = user.getGenre();
@@ -51,6 +72,11 @@ public class BookCollection
         return recommendBooks;
     }
 
+    /**
+     * recommedation process for user based on user's community
+     * @param user user in Profile type
+     * @return a list of recommended books
+     */
     public static ArrayList<Book> recommendByCommunity(Profile user)
     {
         if (BillManager.findBillCollection(user) != null)
@@ -85,6 +111,11 @@ public class BookCollection
         }
     }
 
+    /**
+     * add any user who bought a new book
+     * @param user user in Profile type
+     * @param itemList selected books by user
+     */
     public static void addUserBuyBook(Profile user, ArrayList<Pair<Book, Integer>> itemList)
     {
         for (Pair<Book, Integer> item : itemList) 
@@ -109,6 +140,11 @@ public class BookCollection
         updateFileUserBookList();
     }
 
+    /**
+     * search for books by matching pattern of keywords
+     * @param keywords keyword from user
+     * @return a list of searched books
+     */
 	public static List<String> searchBooks(String keywords)
 	{
 		List<String> list = bookCollection.keySet().stream().filter(s -> s.contains(keywords))
@@ -119,6 +155,11 @@ public class BookCollection
 			return list;
     }
     
+    /**
+     * check any book that exist enough for buying or not
+     * @param items the selected books and quantity
+     * @return  true - if all of interested books are effordable
+     */
     public static boolean isBookEnough(ArrayList<Pair<Book,Integer>> items)
     {
         for (Pair<Book,Integer> item : items) 
@@ -129,6 +170,10 @@ public class BookCollection
         return true;
     }
 
+    /**
+     * decrese the remaining number of bought book
+     * @param items items in bill or be bought
+     */
     public static void decreaseRemainingBooks(ArrayList<Pair<Book,Integer>> items)
     {
         for (Pair<Book,Integer> item : items) 
@@ -141,6 +186,9 @@ public class BookCollection
          updateFileBookCollection();
     }
     
+    /**
+     * for starting the program, this method would be called to read all books information from file.
+     */
     public static void initializeCollection()
     {
     	try
@@ -153,6 +201,9 @@ public class BookCollection
 		}
     }
     
+    /**
+     * for starting the program, this method would be called to read all user who bought books information from file.
+     */
     public static void initializeUserList()
     {
     	try
@@ -165,11 +216,17 @@ public class BookCollection
 		}
     }
     
+    /**
+     * everytime the bookCollection have changed, this method would be called to update new data to file
+     */
     public static void updateFileBookCollection()
     {
     	IOUtils.WriteObjectToFile("bookCollection", bookCollection);
     }
     
+    /**
+     * everytime the userListBuyBook have changed, this method would be called to update new data to file
+     */
     public static void updateFileUserBookList()
     {
     	IOUtils.WriteObjectToFile("userListBuyBook", userListBuyBook);    	

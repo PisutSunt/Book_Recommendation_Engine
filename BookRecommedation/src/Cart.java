@@ -98,6 +98,9 @@ public class Cart implements Serializable
         return true;
     }
 
+    /**
+     * print all of book and its quantity in the cart
+     */
     public void showAllBooksInCart()
     {
         if (!selectedBooks.isEmpty())
@@ -117,6 +120,11 @@ public class Cart implements Serializable
         }
     }
 
+    /**
+     * purchasing or buying all books in the cart
+     * @param buyer user in Profile type
+     * @return true - if purchase them successfully
+     */
     public boolean purchase(Profile buyer)
     {
         if (BookCollection.isBookEnough(selectedBooks) && PaypalAdapter.pay())
