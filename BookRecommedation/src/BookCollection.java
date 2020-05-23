@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javafx.util.Pair;
 /**
- * The class BookCollection is singletonand represents handler Book
+ * The class BookCollection is singleton and represents handler Book
  * 
  * Created by Pisut Suntronkiti  ID: 60070501037
  *            Wuttithat Krongyot ID: 60070501084

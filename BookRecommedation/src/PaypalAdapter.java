@@ -9,7 +9,7 @@ public class PaypalAdapter
 {
     /**
      * used for connect the PayPal interface
-     * @return
+     * @return true - if connection is success
      */
     public static boolean pay()
     {
