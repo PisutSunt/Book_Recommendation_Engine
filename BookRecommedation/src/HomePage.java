@@ -1,11 +1,21 @@
 import java.util.ArrayList;
 import java.util.List;
 import javafx.util.Pair;
-
+/**
+ * The class HomePage represents to the home page for
+ * showing the action menu that user can choose what to do
+ * 
+ * Created by Pisut Suntronkiti  ID: 60070501037
+ *            Wuttithat Krongyot ID: 60070501084
+ */
 public class HomePage
 {
+	/** the user who login latest */
 	private static Profile currentUser;
 
+	/**
+	 * print all of main action to do in the store
+	 */
 	public static void showMainMenu()
 	{
 
@@ -42,6 +52,9 @@ public class HomePage
 
 	}
 
+	/**
+	 * print the alternative way to get recommended books from the system
+	 */
 	private static void requestRecommendation()
 	{
 		System.out.println(">>> Request recommendations...");
@@ -119,6 +132,9 @@ public class HomePage
 		}
 	}
 
+	/**
+	 * print searching interface and call the search method from BookCollection class
+	 */
 	private static void searchBooks()
 	{
 		System.out.println(">>> Search for the books...");
@@ -158,6 +174,9 @@ public class HomePage
 
 	}
 
+	/**
+	 * print all of alternative action for user to do in the user's cart
+	 */
 	private static void viewCart()
 	{
 		System.out.println(">>> View your cart...");
@@ -221,6 +240,9 @@ public class HomePage
 
 	}
 
+	/**
+	 * print all Bill that the user bought and paid
+	 */
 	private static void viewBuyingHistory()
 	{
 		System.out.println(">>> View buying history...");
@@ -246,6 +268,10 @@ public class HomePage
 
 	}
 
+	/**
+	 * print the detail of accepted book
+	 * @param book the book that user want to see its detail
+	 */
 	private static void seeBookDetail(Book book)
 	{
 		int remaining;
@@ -271,7 +297,7 @@ public class HomePage
 				remaining = book.getRemaining();
 				System.out.print("\nEnter number of book to buy(remaining " + remaining + ")");
 				bookCount = IOUtils.checkInputMenu(0, remaining);
-				
+    
 				boolean bOk = currentUser.getCart().addBookToCart(book, bookCount);
 				if(bOk)
 					System.out.println("*** Add complete ***");
@@ -294,6 +320,10 @@ public class HomePage
 
 	}
 
+	/**
+	 * user setter method
+	 * @param user user from logging in or creating account
+	 */
 	public static void setCurrentUser(Profile user)
 	{
 		currentUser = user;
