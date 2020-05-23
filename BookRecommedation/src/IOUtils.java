@@ -59,10 +59,10 @@ public class IOUtils
 	}
 
 	/**
-	 * limit input value
+	 * Get input integer from user
 	 * @param min minimum value
 	 * @param max maimum value
-	 * @return exact value of input
+	 * @return Next interger input in limit
 	 */
 	public static int checkInputMenu(int min, int max)
 	{
@@ -97,6 +97,11 @@ public class IOUtils
 		return selMenu;
 	}
 	
+	
+	/**
+	 * Get input string from user
+	 * @return Next string input
+	 */
 	public static String getString()
 	{
 		while(sc.hasNext("\n"))

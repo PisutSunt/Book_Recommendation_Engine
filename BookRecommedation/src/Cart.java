@@ -8,8 +8,8 @@ import javafx.util.Pair;
  * Cart class implements Serializable for converting its state to a byte stream.
  * So, the byte stream can be reverted back into a copy of the it.
  * 
- * Created by Pisut Suntronkiti ID: 60070501037 Wuttithat Krongyot ID:
- * 60070501084
+ * Created by Pisut Suntronkiti  ID: 60070501037
+ *            Wuttithat Krongyot ID: 60070501084
  */
 public class Cart implements Serializable
 {

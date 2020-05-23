@@ -21,16 +21,6 @@ public class BookCollection
     private static Hashtable<String, ArrayList<Profile>> userListBuyBook = new Hashtable<String, ArrayList<Profile>>();
 
     /**
-     * book getter method by its keyword
-     * @param keyword keyword of the book
-     * @return the target book
-     */
-	public static Book getBook(String keyword)
-	{
-		return bookCollection.get(keyword);
-	}
-
-    /**
      * add a new book to the collection
      * @param book a new book
      */
@@ -39,15 +29,6 @@ public class BookCollection
 		bookCollection.put(book.getKeywords(), book);
 		updateFileBookCollection();
 	}
-
-    /**
-     * bookCollection getter method
-     * @return book collection
-     */
-    public static Hashtable<String, Book> getBookCollection()
-    {
-        return bookCollection;
-    }
 
     /**
      * recommedation process for user based on the content (genre/category)
@@ -184,6 +165,25 @@ public class BookCollection
                 .getKeywords()), tempBook);
         }
          updateFileBookCollection();
+    }
+    
+    /**
+     * book getter method by its keyword
+     * @param keyword keyword of the book
+     * @return the target book
+     */
+	public static Book getBook(String keyword)
+	{
+		return bookCollection.get(keyword);
+	}
+    
+    /**
+     * bookCollection getter method
+     * @return book collection
+     */
+    public static Hashtable<String, Book> getBookCollection()
+    {
+        return bookCollection;
     }
     
     /**

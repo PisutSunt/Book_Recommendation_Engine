@@ -14,7 +14,7 @@ public class BillManager
     private static Hashtable<String, ArrayList<Bill>> allBillCollection = new Hashtable<String, ArrayList<Bill>>();
 
     /** billCounter is increased by 1 for running number of billNo. billNo begin at 1 */
-    private static int billCounter = 1;
+    private static int billCounter = 0;
 
     /**
      * findBillCollection is used for get BillCollection by use the key user: Profile
@@ -37,7 +37,7 @@ public class BillManager
     public static void createBill(Profile buyer, ArrayList<Pair<Book, Integer>> boughtBooks, 
                             String receiver, String shippingAddress, float totalPrice)
     {
-        billCounter++;
+    	billCounter++;
         Bill newBill = new Bill(billCounter, buyer.getUserName(), boughtBooks, receiver, shippingAddress, totalPrice);
         if (allBillCollection.containsKey(buyer.getUserName()))
         {
