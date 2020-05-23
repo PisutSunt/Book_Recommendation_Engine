@@ -1,5 +1,5 @@
 
-public class Login
+public class LoginClass
 {
 	private static String userName;
 	private static String password;
@@ -19,7 +19,7 @@ public class Login
 			
 			if(ProfileCollection.isUserNameExisted(userName))
 			{
-				if(password.equals(ProfileCollection.getProfile(userName).getPassword()))
+				if(ProfileCollection.isPasswordCorrect(userName, password))
 				{
 					System.out.println("\n*** Login success! ***");
 					break;

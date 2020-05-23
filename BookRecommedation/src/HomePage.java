@@ -266,6 +266,10 @@ public class HomePage
 			if (ans.equals("Y"))
 			{
 				boolean bOk = currentUser.getCart().addBookToCart(book);
+				if(bOk)
+					System.out.println("*** Add complete ***");
+				else
+					System.out.println("*** Add failed ***");
 				currentUser.getCart().showAllBooksInCart();
 				showMainMenu();
 				break;

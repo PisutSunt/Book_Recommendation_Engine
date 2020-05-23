@@ -35,6 +35,11 @@ public class ProfileCollection implements Serializable
     	return false;
     }
     
+    public static boolean isPasswordCorrect(String username, String password)
+    {
+    	return password.equals(getProfile(username).getPassword());
+    }
+    
     public static Profile getProfile(String userName)
     {
         return profileTable.get(userName);
