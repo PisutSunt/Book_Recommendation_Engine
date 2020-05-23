@@ -1,6 +1,5 @@
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import javafx.util.Pair;
 /**
  * The class BillManager is singleton and represents handler Bill
@@ -14,13 +13,13 @@ import javafx.util.Pair;
  * Created by Pisut Suntronkiti  ID: 60070501037
  *            Wuttithat Krongyot ID: 60070501084
  */
-public class BillManager implements Serializable
+public class BillManager 
 {
     /** auto generated serialVersionUID is used for verifying the class in serialization and deserialization */
-    private static final long serialVersionUID = 6517082982239447106L;
+    // private static final long serialVersionUID = 6517082982239447106L;
 
     /** Hashtable allBillCollection store BillCollection by the Profile as key. */
-    private static Hashtable<Profile, BillCollection> allBillCollection = new Hashtable<Profile, BillCollection>();
+    private static HashMap<String, ArrayList<Bill>> allBillCollection = new HashMap<>();
 
     /** billCounter is increased by 1 for running number of billNo. billNo begin at 1 */
     private static int billCounter = 1;
@@ -30,9 +29,10 @@ public class BillManager implements Serializable
      * @param user Profile type is used for key of hashtable
      * @return BillCollection of user
      */
-    public static BillCollection findBillCollection(Profile user)
+    public static ArrayList<Bill> findBillCollection(Profile user)
     {
-        return allBillCollection.get(user);
+        // return allBillCollection.get(user.getUserName());
+        return allBillCollection.get(user.getUserName());
     }
 
     /**
@@ -47,38 +47,37 @@ public class BillManager implements Serializable
                             String receiver, String shippingAddress, float totalPrice)
     {
         billCounter++;
-        Bill newBill = new Bill(billCounter, buyer, boughtBooks, receiver, shippingAddress, totalPrice);
-        if (allBillCollection.contains(buyer))
+        Bill newBill = new Bill(billCounter, buyer.getUserName(), boughtBooks, receiver, shippingAddress, totalPrice);
+        if (allBillCollection.containsKey(buyer.getUserName()))
         {
-            BillCollection billCollection = allBillCollection.get(buyer);
-            billCollection.addBill(newBill);
-            allBillCollection.replace(buyer, billCollection);
+            ArrayList<Bill> billCollection = allBillCollection.get(buyer.getUserName());
+            billCollection.add(newBill);
+            allBillCollection.replace(buyer.getUserName(), billCollection);
         }
         else
         {
-            BillCollection billCollection = new BillCollection();
-            billCollection.addBill(newBill);
-            allBillCollection.put(buyer, billCollection);
+            ArrayList<Bill> billCollection = new ArrayList<>();
+            billCollection.add(newBill);
+            allBillCollection.put(buyer.getUserName(), billCollection);
         }
-//        updateFile();
+        updateFile();
     }
     
     public static void initialize()
     {
     	try
 		{
-    		allBillCollection = (Hashtable<Profile, BillCollection>)IOUtils.ReadObjectFromFile("billCollection");
+            allBillCollection = (HashMap<String, ArrayList<Bill>>)IOUtils.ReadObjectFromFile("..\\billCollection");
 		}
 		catch (Exception exception)
 		{
-			exception.printStackTrace();
+            exception.printStackTrace();
+            
 		}
     }
     
     public static void updateFile()
     {
-    	IOUtils.WriteObjectToFile("billCollection", (Hashtable<Profile, BillCollection>)allBillCollection);
+    	IOUtils.WriteObjectToFile("..\\billCollection", allBillCollection);
     }
-    
-    
 }

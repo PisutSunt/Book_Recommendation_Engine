@@ -53,8 +53,8 @@ public class BookCollection
             Set<Book> recommendBookSet = new LinkedHashSet<Book>();
             Set<Profile> communitySet = new LinkedHashSet<Profile>();
             System.out.println();
-            ArrayList<Pair<Book, Integer>> latestItems = BillManager.findBillCollection(user).getBillCollection()
-                        .get(BillManager.findBillCollection(user).getBillCollection().size() - 1).getBoughtBooks();
+            ArrayList<Pair<Book, Integer>> latestItems = BillManager.findBillCollection(user)
+                        .get(BillManager.findBillCollection(user).size() - 1).getBoughtBooks();
             for (Pair<Book, Integer> item : latestItems)
             {
                 Book tempBook = item.getKey();
@@ -62,8 +62,8 @@ public class BookCollection
             }
             for (Profile tempUser : communitySet) 
             {
-                for (Pair<Book, Integer> item : BillManager.findBillCollection(tempUser).getBillCollection()
-                        .get(BillManager.findBillCollection(tempUser).getBillCollection().size() - 1).getBoughtBooks())
+                for (Pair<Book, Integer> item : BillManager.findBillCollection(tempUser)
+                        .get(BillManager.findBillCollection(tempUser).size() - 1).getBoughtBooks())
                 {
                     if (!userListBuyBook.get(item.getKey().getKeywords()).contains(user))
                         recommendBookSet.add(item.getKey());
@@ -137,7 +137,7 @@ public class BookCollection
     {
     	try
 		{
-    		bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile("bookCollection");
+    		bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile("..\\bookCollection");
 		}
 		catch (Exception exception)
 		{
@@ -147,7 +147,7 @@ public class BookCollection
     
     public static void updateFile()
     {
-    	IOUtils.WriteObjectToFile("bookCollection", (Hashtable<String, Book>)bookCollection);
+    	IOUtils.WriteObjectToFile("..\\bookCollection", (Hashtable<String, Book>)bookCollection);
     }
 
     
