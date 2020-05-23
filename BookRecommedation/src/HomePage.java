@@ -248,7 +248,9 @@ public class HomePage
 
 	private static void seeBookDetail(Book book)
 	{
-
+		int remaining;
+		int bookCount;
+		String ans;
 		System.out.println("\tTitle: " + book.getTitle());
 		System.out.println("\tAuthor: " + book.getAuthor());
 		System.out.println("\tGenre: " + book.getGenre());
@@ -262,10 +264,14 @@ public class HomePage
 		while (true)
 		{
 			System.out.print("Add this book to cart? (Y/N)> ");
-			String ans = IOUtils.getString();
+			ans = IOUtils.getString();
 			if (ans.equals("Y"))
 			{
-				boolean bOk = currentUser.getCart().addBookToCart(book);
+				remaining = book.getRemaining();
+				System.out.print("\nEnter number of book to buy(remaining " + remaining + ")");
+				bookCount = IOUtils.checkInputMenu(0, remaining);
+				
+				boolean bOk = currentUser.getCart().addBookToCart(book, bookCount);
 				if(bOk)
 					System.out.println("*** Add complete ***");
 				else
