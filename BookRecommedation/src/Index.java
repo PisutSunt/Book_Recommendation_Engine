@@ -1,4 +1,6 @@
-
+/**
+ * The class Index represents
+ */
 public class Index
 {
 	

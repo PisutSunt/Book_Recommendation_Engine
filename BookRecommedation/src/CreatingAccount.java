@@ -7,13 +7,25 @@
  */
 public class CreatingAccount
 {
+	/** available genre of the the books in the store */
 	private static String[] Genres = { "Education", "Sci-Fi", "Adventure", "Romance", "History", "Biography", "Comics",
 			"Mystery", "Technology", "Business", "Language", "Fantasy", "Horror" };
+	
+	/** user name in String */
 	private static String userName;
+
+	/** user email in String */
 	private static String email;
+
+	/** password for the account in String */
 	private static String password;
+
+	/** selected genre by user */
 	private static String[] userGenre = new String[5];
 
+	/**
+	 * print the user interface of register form
+	 */
 	public static void createAccount()
 	{
 		System.out.println("\n------------------ Create account------------------ ");
