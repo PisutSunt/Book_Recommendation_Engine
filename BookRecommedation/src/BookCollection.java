@@ -11,6 +11,7 @@ public class BookCollection
 {
     public static Hashtable<String, Book> bookCollection = new Hashtable<String, Book>();
     private static Hashtable<String, ArrayList<Profile>> userListBuyBook = new Hashtable<String, ArrayList<Profile>>();
+    private static String filepath;
 
 	public static Book getBook(String keyword)
 	{
@@ -131,13 +132,15 @@ public class BookCollection
             bookCollection.replace(tempBook.getKeywords(), bookCollection.get(item.getKey()
                 .getKeywords()), tempBook);
         }
+        // updateFile();
     }
     
     public static void initialize()
     {
     	try
 		{
-    		bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile("..\\bookCollection");
+            bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile(filepath);
+            userListBuyBook = (Hashtable<String, ArrayList<Profile>>)IOUtils.ReadObjectFromFile("..\\userListBuyBook");
 		}
 		catch (Exception exception)
 		{
@@ -145,10 +148,13 @@ public class BookCollection
 		}
     }
     
-    public static void updateFile()
+    private static void updateBookCollection()
     {
-    	IOUtils.WriteObjectToFile("..\\bookCollection", (Hashtable<String, Book>)bookCollection);
+    	IOUtils.WriteObjectToFile("..\\bookCollection", bookCollection);
     }
 
-    
+    private static void updateUserListBuyBook()
+    {
+        IOUtils.WriteObjectToFile("..\\userListBuyBook", userListBuyBook);
+    }
 }

@@ -1,37 +1,29 @@
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Hashtable;
 import javafx.util.Pair;
 /**
  * The class BillManager is singleton and represents handler Bill
  * and BillCollection. BillManager class could findBillCollection
  * and createBill.
  * 
- * BillManager class implements Serializable for converting its
- * state to a byte stream. So, the byte stream can be reverted back
- * into a copy of the it.
- * 
  * Created by Pisut Suntronkiti  ID: 60070501037
  *            Wuttithat Krongyot ID: 60070501084
  */
 public class BillManager 
 {
-    /** auto generated serialVersionUID is used for verifying the class in serialization and deserialization */
-    // private static final long serialVersionUID = 6517082982239447106L;
-
-    /** Hashtable allBillCollection store BillCollection by the Profile as key. */
-    private static HashMap<String, ArrayList<Bill>> allBillCollection = new HashMap<>();
+    /** Hashtable allBillCollection store ArrayList of Bill by the String of user name as key. */
+    private static Hashtable<String, ArrayList<Bill>> allBillCollection = new Hashtable<String, ArrayList<Bill>>();
 
     /** billCounter is increased by 1 for running number of billNo. billNo begin at 1 */
     private static int billCounter = 1;
 
     /**
      * findBillCollection is used for get BillCollection by use the key user: Profile
-     * @param user Profile type is used for key of hashtable
-     * @return BillCollection of user
+     * @param user Profile type to get user name using for key of hashtable
+     * @return list of bill that own by the user
      */
     public static ArrayList<Bill> findBillCollection(Profile user)
     {
-        // return allBillCollection.get(user.getUserName());
         return allBillCollection.get(user.getUserName());
     }
 
@@ -63,11 +55,14 @@ public class BillManager
         updateFile();
     }
     
+    /**
+     * for starting the program, this method would be called to read bill information from file.
+     */
     public static void initialize()
     {
     	try
 		{
-            allBillCollection = (HashMap<String, ArrayList<Bill>>)IOUtils.ReadObjectFromFile("..\\billCollection");
+            allBillCollection = (Hashtable<String, ArrayList<Bill>>)IOUtils.ReadObjectFromFile("..\\billCollection");
 		}
 		catch (Exception exception)
 		{
@@ -76,7 +71,10 @@ public class BillManager
 		}
     }
     
-    public static void updateFile()
+    /**
+     * everytime the members have changed, this method would be called to update new data to file
+     */
+    private static void updateFile()
     {
     	IOUtils.WriteObjectToFile("..\\billCollection", allBillCollection);
     }

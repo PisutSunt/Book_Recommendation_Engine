@@ -6,20 +6,22 @@ import javafx.util.Pair;
  * The class Bill represents proof document of payment in the Book Store.
  * Bill includes billNo, buyer, boughtBooks, receiver, shippingAddress, totalPrice and orderDate.
  * 
+ * Bill class implements Serializable for converting its
+ * state to a byte stream. So, the byte stream can be reverted back
+ * into a copy of the it.
+ * 
  * Created by Pisut Suntronkiti  ID: 60070501037
  *            Wuttithat Krongyot ID: 60070501084
  */
 public class Bill implements Serializable
 {
-    /**
-     *
-     */
+    /** auto generated serialVersionUID is used for verifying the class in serialization and deserialization */
     private static final long serialVersionUID = -9197236779513368141L;
 
     /** unique key of bill in the integer type */
     private int billNo;
 
-    /** owner of Bill in the Profile type */
+    /** owner of Bill in the String type */
     private String buyer;
 
     /** buying item list, each item represents by pair of Book object and quantity of book(s) */
@@ -34,7 +36,7 @@ public class Bill implements Serializable
     /** float of the net cost of each Bill */
     private float totalPrice;
 
-    /** Date of payment */
+    /** Date of payment in long type (keep as milliseccond)*/
     private long orderDate;
 
     /**
