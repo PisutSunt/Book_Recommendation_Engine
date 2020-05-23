@@ -25,6 +25,7 @@ public class BookCollection
 	public static void addBook(Book book)
 	{
 		bookCollection.put(book.getKeywords(), book);
+		updateFileBookCollection();
 	}
 
     public static Hashtable<String, Book> getBookCollection()
@@ -105,6 +106,7 @@ public class BookCollection
                 userListBuyBook.put(book.getKeywords(), newUserList);
             }
         }
+        updateFileUserBookList();
     }
 
 	public static List<String> searchBooks(String keywords)
@@ -136,15 +138,14 @@ public class BookCollection
             bookCollection.replace(tempBook.getKeywords(), bookCollection.get(item.getKey()
                 .getKeywords()), tempBook);
         }
-        // updateFile();
+         updateFileBookCollection();
     }
     
-    public static void initialize()
+    public static void initializeCollection()
     {
     	try
 		{
-            bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile("..\\bookCollection");
-            userListBuyBook = (Hashtable<String, ArrayList<Profile>>)IOUtils.ReadObjectFromFile("..\\userListBuyBook");
+            bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile("bookCollection");
 		}
 		catch (Exception exception)
 		{
@@ -152,13 +153,25 @@ public class BookCollection
 		}
     }
     
-    private static void updateBookCollection()
+    public static void initializeUserList()
     {
-    	IOUtils.WriteObjectToFile("..\\bookCollection", bookCollection);
+    	try
+		{
+            userListBuyBook = (Hashtable<String, ArrayList<Profile>>)IOUtils.ReadObjectFromFile("userListBuyBook");
+		}
+		catch (Exception exception)
+		{
+			exception.printStackTrace();
+		}
     }
-
-    private static void updateUserListBuyBook()
+    
+    public static void updateFileBookCollection()
     {
-        IOUtils.WriteObjectToFile("..\\userListBuyBook", userListBuyBook);
+    	IOUtils.WriteObjectToFile("bookCollection", bookCollection);
+    }
+    
+    public static void updateFileUserBookList()
+    {
+    	IOUtils.WriteObjectToFile("userListBuyBook", userListBuyBook);    	
     }
 }

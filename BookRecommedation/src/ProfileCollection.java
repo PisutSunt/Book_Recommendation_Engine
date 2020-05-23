@@ -50,11 +50,16 @@ public class ProfileCollection implements Serializable
     	profileTable.put(userName, profile);
     }
     
+    public static Hashtable<String, Profile> getProfileCollection()
+    {
+        return profileTable;
+    }
+    
     public static void initialize()
     {
     	try
 		{
-    		profileTable = (Hashtable<String, Profile>)IOUtils.ReadObjectFromFile("..\\profileCollection");
+    		profileTable = (Hashtable<String, Profile>)IOUtils.ReadObjectFromFile("profileCollection");
 		}
 		catch (Exception exception)
 		{
@@ -64,11 +69,8 @@ public class ProfileCollection implements Serializable
     
     public static void updateFile()
     {
-    	IOUtils.WriteObjectToFile("..\\profileCollection", (Hashtable<String, Profile>)profileTable);
+    	IOUtils.WriteObjectToFile("profileCollection", (Hashtable<String, Profile>)profileTable);
     }
 
-    public static Hashtable<String, Profile> getProfileCollection()
-    {
-        return profileTable;
-    }
+
 }
