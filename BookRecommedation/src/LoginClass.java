@@ -19,7 +19,7 @@ public class LoginClass
 			
 			if(ProfileCollection.isUserNameExisted(userName))
 			{
-				if(password.equals(ProfileCollection.getProfile(userName).getPassword()))
+				if(ProfileCollection.isPasswordCorrect(userName, password))
 				{
 					System.out.println("\n*** Login success! ***");
 					break;
