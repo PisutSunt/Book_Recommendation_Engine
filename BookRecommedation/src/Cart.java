@@ -104,6 +104,7 @@ public class Cart implements Serializable
             System.out.print("Address> ");
             String shippingAddress = IOUtils.getString();
             BillManager.createBill(buyer, selectedBooks, receiver, shippingAddress, totalPrice);
+            BookCollection.addUserBuyBook(buyer, selectedBooks);
             selectedBooks.clear();
             return true;
         }
