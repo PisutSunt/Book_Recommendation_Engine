@@ -14,7 +14,7 @@ public class Main
 		BookCollection.addBook(b1);
 		BookCollection.addBook(b2);
 		BookCollection.addBook(b3);
-		BookCollection.updateFile();
+		// BookCollection.update();
 
 		Index.showIndex();
 	}

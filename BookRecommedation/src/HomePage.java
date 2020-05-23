@@ -225,7 +225,7 @@ public class HomePage
 	{
 		System.out.println(">>> View buying history...");
 
-		BillCollection bills = BillManager.findBillCollection(currentUser);
+		ArrayList<Bill> bills = BillManager.findBillCollection(currentUser);
 		if (bills == null)
 		{
 			System.out.println("\t*** You need to buy something first! ***");
@@ -235,7 +235,7 @@ public class HomePage
 		{
 			int index = 0;
 			System.out.println("\t   BillNo.\t\t\tOrderDate\t\t\tTotalPrice");
-			for (Bill itr : bills.getBillCollection())
+			for (Bill itr : bills)
 			{
 				index++;
 				System.out.printf("\t%d. %-28s %-31s %s baht\n", index, itr.getBillNo(), itr.getOrderDate(),

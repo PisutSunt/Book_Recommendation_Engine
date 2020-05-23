@@ -11,7 +11,7 @@ public class BookCollection
 {
     public static Hashtable<String, Book> bookCollection = new Hashtable<String, Book>();
     private static Hashtable<String, ArrayList<Profile>> userListBuyBook = new Hashtable<String, ArrayList<Profile>>();
-    private static String fileName;
+    private static String filepath;
 
 	public static Book getBook(String keyword)
 	{
@@ -54,8 +54,8 @@ public class BookCollection
             Set<Book> recommendBookSet = new LinkedHashSet<Book>();
             Set<Profile> communitySet = new LinkedHashSet<Profile>();
             System.out.println();
-            ArrayList<Pair<Book, Integer>> latestItems = BillManager.findBillCollection(user).getBillCollection()
-                        .get(BillManager.findBillCollection(user).getBillCollection().size() - 1).getBoughtBooks();
+            ArrayList<Pair<Book, Integer>> latestItems = BillManager.findBillCollection(user)
+                        .get(BillManager.findBillCollection(user).size() - 1).getBoughtBooks();
             for (Pair<Book, Integer> item : latestItems)
             {
                 Book tempBook = item.getKey();
@@ -63,8 +63,8 @@ public class BookCollection
             }
             for (Profile tempUser : communitySet) 
             {
-                for (Pair<Book, Integer> item : BillManager.findBillCollection(tempUser).getBillCollection()
-                        .get(BillManager.findBillCollection(tempUser).getBillCollection().size() - 1).getBoughtBooks())
+                for (Pair<Book, Integer> item : BillManager.findBillCollection(tempUser)
+                        .get(BillManager.findBillCollection(tempUser).size() - 1).getBoughtBooks())
                 {
                     if (!userListBuyBook.get(item.getKey().getKeywords()).contains(user))
                         recommendBookSet.add(item.getKey());
@@ -132,14 +132,15 @@ public class BookCollection
             bookCollection.replace(tempBook.getKeywords(), bookCollection.get(item.getKey()
                 .getKeywords()), tempBook);
         }
+        // updateFile();
     }
     
     public static void initialize(String file)
     {
     	try
 		{
-    		fileName = file;
-    		bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile(fileName);
+            bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile(filepath);
+            userListBuyBook = (Hashtable<String, ArrayList<Profile>>)IOUtils.ReadObjectFromFile("..\\userListBuyBook");
 		}
 		catch (Exception exception)
 		{
@@ -147,10 +148,13 @@ public class BookCollection
 		}
     }
     
-    public static void updateFile()
+    private static void updateBookCollection()
     {
-    	IOUtils.WriteObjectToFile(fileName, (Hashtable<String, Book>)bookCollection);
+    	IOUtils.WriteObjectToFile("..\\bookCollection", bookCollection);
     }
 
-    
+    private static void updateUserListBuyBook()
+    {
+        IOUtils.WriteObjectToFile("..\\userListBuyBook", userListBuyBook);
+    }
 }
