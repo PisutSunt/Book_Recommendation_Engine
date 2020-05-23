@@ -263,6 +263,7 @@ public class HomePage
 		System.out.println("---------------------------------------");
 		while (true)
 		{
+			
 			System.out.print("Add this book to cart? (Y/N)> ");
 			ans = IOUtils.getString();
 			if (ans.equals("Y"))
@@ -279,7 +280,6 @@ public class HomePage
 				currentUser.getCart().showAllBooksInCart();
 				showMainMenu();
 				break;
-
 			}
 			else if (ans.equals("N"))
 			{
