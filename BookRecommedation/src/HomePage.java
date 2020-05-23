@@ -246,7 +246,7 @@ public class HomePage
 	private static void viewBuyingHistory()
 	{
 		System.out.println(">>> View buying history...");
-
+		BillManager.initialize(); // again for sure
 		ArrayList<Bill> bills = BillManager.findBillCollection(currentUser);
 		if (bills == null)
 		{
@@ -256,18 +256,51 @@ public class HomePage
 		else
 		{
 			int index = 0;
-			System.out.println("\t   BillNo.\t\t\tOrderDate\t\t\tTotalPrice");
+			System.out.println("\t   BillNo.\t\tOrderDate\t\t\tTotalPrice");
 			for (Bill itr : bills)
 			{
 				index++;
-				System.out.printf("\t%d. %-28s %-31s %s baht\n", index, itr.getBillNo(), itr.getOrderDate(),
+				System.out.printf("\t%d. %-20s %-31s %s baht\n", index, itr.getBillNo(), itr.getOrderDate(),
 						itr.getTotalPrice());
 			}
-			showMainMenu();
+		
+			System.out.print("\nSelect a bill number to see the detail (or type '0' to back to main menu).");
+			int selMenu = IOUtils.checkInputMenu(0, bills.size());
+
+			if (selMenu == 0)
+			{
+				showMainMenu();
+			}
+			else
+			{
+				Bill bill = bills.get(selMenu-1);
+				seeBillDetail(bill);
+			}
 		}
 
 	}
 
+	
+	/**
+	 * Print bill detail
+	 * @param bill A bill that user want to see datail
+	 */
+	private static void seeBillDetail(Bill bill)
+	{
+		System.out.println("\tBill No: " + bill.getBillNo());
+		System.out.println("\tBuyer: " + bill.getBuyer());
+		System.out.println("\tBooks: " );
+		for(Pair<Book, Integer> book: bill.getBoughtBooks())
+		{
+			System.out.print("\t\t" + book.getKey().getTitle() + "  "+ book.getValue() + " pcs.\n");
+		}
+		System.out.println("\tReceiver: " + bill.getReceiver());
+		System.out.println("\tShipping address: " + bill.getShippingAddress());
+		System.out.println("\tOrder date: " + bill.getOrderDate());
+		System.out.println("\tTotal price: " + bill.getTotalPrice());
+		showMainMenu();
+	}
+	
 	/**
 	 * print the detail of accepted book
 	 * @param book the book that user want to see its detail

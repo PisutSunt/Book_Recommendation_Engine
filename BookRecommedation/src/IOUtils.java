@@ -26,7 +26,7 @@ public class IOUtils
 			FileInputStream fileIn = new FileInputStream(filepath);
 			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 			Object obj = objectIn.readObject();
-			System.out.println("Finish reading from the file: " + filepath);
+//			System.out.println("Finish reading from the file: " + filepath);
 			objectIn.close();
 			return obj;
 		}
@@ -50,7 +50,7 @@ public class IOUtils
 			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
 			objectOut.writeObject(targetObj);
 			objectOut.close();
-			System.out.println("Finish writing to file: " + filepath);
+//			System.out.println("Finish writing to file: " + filepath);
 		}
 		catch (Exception exception)
 		{
