@@ -61,7 +61,7 @@ public class BillManager
     {
     	try
 		{
-            allBillCollection = (Hashtable<String, ArrayList<Bill>>)IOUtils.ReadObjectFromFile("billCollection");
+            allBillCollection = (Hashtable<String, ArrayList<Bill>>)IOUtils.readObjectFromFile("billCollection");
 		}
 		catch (Exception exception)
 		{
@@ -75,6 +75,6 @@ public class BillManager
      */
     private static void updateFile()
     {
-    	IOUtils.WriteObjectToFile("billCollection", allBillCollection);
+    	IOUtils.writeObjectToFile("billCollection", allBillCollection);
     }
 }

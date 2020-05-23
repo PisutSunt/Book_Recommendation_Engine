@@ -193,7 +193,7 @@ public class BookCollection
     {
     	try
 		{
-            bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile("bookCollection");
+            bookCollection = (Hashtable<String, Book>)IOUtils.readObjectFromFile("bookCollection");
 		}
 		catch (Exception exception)
 		{
@@ -208,7 +208,7 @@ public class BookCollection
     {
     	try
 		{
-            userListBuyBook = (Hashtable<String, ArrayList<Profile>>)IOUtils.ReadObjectFromFile("userListBuyBook");
+            userListBuyBook = (Hashtable<String, ArrayList<Profile>>)IOUtils.readObjectFromFile("userListBuyBook");
 		}
 		catch (Exception exception)
 		{
@@ -221,7 +221,7 @@ public class BookCollection
      */
     public static void updateFileBookCollection()
     {
-    	IOUtils.WriteObjectToFile("bookCollection", bookCollection);
+    	IOUtils.writeObjectToFile("bookCollection", bookCollection);
     }
     
     /**
@@ -229,6 +229,6 @@ public class BookCollection
      */
     public static void updateFileUserBookList()
     {
-    	IOUtils.WriteObjectToFile("userListBuyBook", userListBuyBook);    	
+    	IOUtils.writeObjectToFile("userListBuyBook", userListBuyBook);    	
     }
 }

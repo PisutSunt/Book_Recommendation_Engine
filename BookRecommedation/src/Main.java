@@ -1,4 +1,9 @@
-
+/**
+ * Used for launching the program
+ * 
+ * Created by Pisut Suntronkiti  ID: 60070501037
+ *            Wuttithat Krongyot ID: 60070501084
+ */
 public class Main
 {
 	public static void main(String[] args) 

@@ -59,7 +59,7 @@ public class ProfileCollection implements Serializable
     {
     	try
 		{
-    		profileTable = (Hashtable<String, Profile>)IOUtils.ReadObjectFromFile("profileCollection");
+    		profileTable = (Hashtable<String, Profile>)IOUtils.readObjectFromFile("profileCollection");
 		}
 		catch (Exception exception)
 		{
@@ -69,7 +69,7 @@ public class ProfileCollection implements Serializable
     
     public static void updateFile()
     {
-    	IOUtils.WriteObjectToFile("profileCollection", (Hashtable<String, Profile>)profileTable);
+    	IOUtils.writeObjectToFile("profileCollection", (Hashtable<String, Profile>)profileTable);
     }
 
 

@@ -3,12 +3,23 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
-
+/**
+ * The class IOUtils handles about reading and writing file
+ * 
+ * Created by Pisut Suntronkiti  ID: 60070501037
+ *            Wuttithat Krongyot ID: 60070501084
+ */
 public class IOUtils
 {
+	/** scanner for get input from System.in */
 	private static Scanner sc = new Scanner(System.in);
 
-	public static Object ReadObjectFromFile(String filepath)
+	/**
+	 * read file and return for the object
+	 * @param filepath directory of file
+	 * @return imported object
+	 */
+	public static Object readObjectFromFile(String filepath)
 	{
 		try
 		{
@@ -26,7 +37,12 @@ public class IOUtils
 		}
 	}
 
-	public static void WriteObjectToFile(String filepath, Object targetObj)
+	/**
+	 * write the object to the file with spcific filepath
+	 * @param filepath directory of the file
+	 * @param targetObj target object
+	 */
+	public static void writeObjectToFile(String filepath, Object targetObj)
 	{
 		try
 		{
@@ -42,6 +58,12 @@ public class IOUtils
 		}
 	}
 
+	/**
+	 * limit input value
+	 * @param min minimum value
+	 * @param max maimum value
+	 * @return exact value of input
+	 */
 	public static int checkInputMenu(int min, int max)
 	{
 		int selMenu;
