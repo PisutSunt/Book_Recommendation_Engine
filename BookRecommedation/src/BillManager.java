@@ -75,8 +75,6 @@ public class BillManager
      */
     private static void updateFile()
     {
-    	System.out.println("***Update billCollection!");
-    	System.out.println(allBillCollection);
     	IOUtils.WriteObjectToFile("billCollection", allBillCollection);
     }
 }
