@@ -264,7 +264,7 @@ public class HomePage
 						itr.getTotalPrice());
 			}
 		
-			System.out.print("\nSelect a bill number to see the detail (or type '0' to back to main menu).");
+			System.out.print("\nSelect a ordinal number ( to see the detail (or type '0' to back to main menu).");
 			int selMenu = IOUtils.checkInputMenu(0, bills.size());
 
 			if (selMenu == 0)
