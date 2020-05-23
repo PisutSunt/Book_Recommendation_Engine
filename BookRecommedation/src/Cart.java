@@ -77,6 +77,11 @@ public class Cart implements Serializable
         return true;
     }
 
+    /**
+     * remove the book out of the cart
+     * @param item a book with quantity that be selected
+     * @return true - if remove it successfully
+     */
     public boolean removeBookFromCart(Pair<Book, Integer> item)
     {
         try
