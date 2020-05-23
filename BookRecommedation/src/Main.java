@@ -4,7 +4,7 @@ public class Main
 	public static void main(String[] args) 
 	{
 		ProfileCollection.initialize();
-		BookCollection.initialize();
+		BookCollection.initialize("bookCollection");
 //		BillManager.initialize();
 		
 		/* This field for mockup data, It should be deleted after mockup complete */

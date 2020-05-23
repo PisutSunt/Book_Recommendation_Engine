@@ -11,6 +11,7 @@ public class BookCollection
 {
     public static Hashtable<String, Book> bookCollection = new Hashtable<String, Book>();
     private static Hashtable<String, ArrayList<Profile>> userListBuyBook = new Hashtable<String, ArrayList<Profile>>();
+    private static String fileName;
 
 	public static Book getBook(String keyword)
 	{
@@ -133,11 +134,12 @@ public class BookCollection
         }
     }
     
-    public static void initialize()
+    public static void initialize(String file)
     {
     	try
 		{
-    		bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile("bookCollection");
+    		fileName = file;
+    		bookCollection = (Hashtable<String, Book>)IOUtils.ReadObjectFromFile(fileName);
 		}
 		catch (Exception exception)
 		{
@@ -147,7 +149,7 @@ public class BookCollection
     
     public static void updateFile()
     {
-    	IOUtils.WriteObjectToFile("bookCollection", (Hashtable<String, Book>)bookCollection);
+    	IOUtils.WriteObjectToFile(fileName, (Hashtable<String, Book>)bookCollection);
     }
 
     
