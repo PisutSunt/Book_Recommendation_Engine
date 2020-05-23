@@ -2,8 +2,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import javafx.util.Pair;
 /**
- * The class BillManager is singleton and represents handler Bill
- * and BillCollection. BillManager class could findBillCollection
+ * The class BillManager is singleton and represents handler Bill. BillManager class could findBillCollection
  * and createBill.
  * 
  * Created by Pisut Suntronkiti  ID: 60070501037
