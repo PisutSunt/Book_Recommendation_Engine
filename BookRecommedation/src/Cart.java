@@ -76,12 +76,14 @@ public class Cart implements Serializable
 
     public void showAllBooksInCart()
     {
-        if (selectedBooks != null)
+        if (!selectedBooks.isEmpty())
         {
         	System.out.println("------------- Your cart -------------");
+        	int index = 0;
             for (Pair<Book, Integer> pair : selectedBooks)
             {
-                System.out.println("\t" + pair.getKey().getTitle() + "   " + pair.getValue() + " pcs.");
+            	index++;
+                System.out.println("\t" + index + ". " + pair.getKey().getTitle() + "   " + pair.getValue() + " pcs.");
             }
             System.out.println("\n\tTotal price: " + totalPrice + " baht");
         }
@@ -96,7 +98,7 @@ public class Cart implements Serializable
         if (BookCollection.isBookEnough(selectedBooks) && PaypalAdapter.pay())
         {
             BookCollection.decreaseRemainingBooks(selectedBooks);
-            System.out.println("\t*** Fill delivery information ***");
+            System.out.println("*** Fill delivery information ***");
             System.out.print("Receiver name> ");
             String receiver = IOUtils.getString();
             System.out.print("Address> ");

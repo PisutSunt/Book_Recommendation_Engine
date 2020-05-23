@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Hashtable;
 /**
  * The class BillCollection represents folder for keeping Bill.
  * BillCollection class could getBillCollection and addBill.
@@ -46,4 +47,5 @@ public class BillCollection implements Serializable
         }
         return true;
     }
+
 }

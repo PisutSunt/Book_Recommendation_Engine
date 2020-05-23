@@ -48,6 +48,10 @@ public class IOUtils
 		while (true)
 		{
 			System.out.print("\n>> ");
+			while(sc.hasNext("\n"))
+			{
+				sc.next();
+			}
 			if (sc.hasNextInt())
 			{
 				selMenu = sc.nextInt();

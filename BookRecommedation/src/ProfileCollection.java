@@ -45,11 +45,6 @@ public class ProfileCollection implements Serializable
     	profileTable.put(userName, profile);
     }
     
-//    public static void showAllProfile()
-//    {
-//    	System.out.println(profileTable);
-//    }
-    
     public static void initialize()
     {
     	try
