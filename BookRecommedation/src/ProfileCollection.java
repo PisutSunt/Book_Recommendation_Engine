@@ -71,16 +71,6 @@ public class ProfileCollection implements Serializable
     }
     
     /**
-     * Profile getter method with user name
-     * @param userName user name for getting the Profile
-     * @return the wanted Profile
-     */
-    public static Profile getProfile(String userName)
-    {
-        return profileTable.get(userName);
-    }
-    
-    /**
      * add a new user to the collection
      * @param userName the user name
      * @param profile the Profile that user want to add to collection
@@ -88,6 +78,16 @@ public class ProfileCollection implements Serializable
     public static void addUser(String userName, Profile profile)
     {
     	profileTable.put(userName, profile);
+    }
+    
+    /**
+     * Profile getter method with user name
+     * @param userName user name for getting the Profile
+     * @return the wanted Profile
+     */
+    public static Profile getProfile(String userName)
+    {
+        return profileTable.get(userName);
     }
     
     /**
