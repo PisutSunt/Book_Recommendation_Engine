@@ -1,34 +1,48 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.util.Pair;
-
+/**
+ * The class Cart represents cart or basket for containig books to buy
+ * 
+ * Cart class implements Serializable for converting its
+ * state to a byte stream. So, the byte stream can be reverted back
+ * into a copy of the it.
+ * 
+ * Created by Pisut Suntronkiti  ID: 60070501037
+ *            Wuttithat Krongyot ID: 60070501084
+ */
 public class Cart implements Serializable
 {
-    /**
-     *
-     */
+    /** auto generated serialVersionUID is used for verifying the class in serialization and deserialization */
     private static final long serialVersionUID = 7695178204958042383L;
+
+    /** refers to books and quantity that the user has selected */
     private static ArrayList<Pair<Book, Integer>> selectedBooks = new ArrayList<Pair<Book, Integer>>();
+
+    /** the current net price of book */
     private float totalPrice = 0;
 
+    /**
+     * totalPrice getter method
+     * @return the current net price of book
+     */
     public float getTotalPrice()
     {
-        float totalPrice = 0;
-        for (Pair<Book,Integer> pair : selectedBooks)
-        {
-            for (int i = 0; i < pair.getValue(); i++)
-            {
-                totalPrice += pair.getKey().getPrice();
-            }
-        }
         return totalPrice;
     }
 
+    /**
+     * selectedBooks getter method
+     * @return refers to books and quantity that the user has selected
+     */
     public ArrayList<Pair<Book, Integer>> getSelectedBooks()
     {
         return selectedBooks;
     }
 
+    /** 
+     * calculate the total price
+     */
     private void calculateTotalPrice()
     {
         float totalPrice = 0;
@@ -39,6 +53,11 @@ public class Cart implements Serializable
         this.totalPrice = totalPrice;
     }
 
+    /**
+     * add a book to the cart
+     * @param book refers to book that may be bought
+     * @return true - if add book successfully
+     */
     public boolean addBookToCart(Book book)
     {
     	int remaining = book.getRemaining();
