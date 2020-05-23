@@ -1,5 +1,5 @@
 
-public class CreateAccount
+public class CreatingAccount
 {
 	private static String[] Genres = { "Education", "Sci-Fi", "Adventure", "Romance", "History", "Biography", "Comics",
 			"Mystery", "Technology", "Business", "Language", "Fantasy", "Horror" };

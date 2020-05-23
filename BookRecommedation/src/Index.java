@@ -16,10 +16,10 @@ public class Index
 		switch(selMenu)
 		{
 			case 1:
-				Login.login();
+				LoginClass.login();
 				break;
 			case 2:
-				CreateAccount.createAccount();
+				CreatingAccount.createAccount();
 				break;
 			default:
 				break;

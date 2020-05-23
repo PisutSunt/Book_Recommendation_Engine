@@ -1,5 +1,5 @@
 
-public class Login
+public class LoginClass
 {
 	private static String userName;
 	private static String password;
