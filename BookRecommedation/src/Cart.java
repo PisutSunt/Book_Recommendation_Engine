@@ -56,14 +56,11 @@ public class Cart implements Serializable
     /**
      * add a book to the cart
      * @param book refers to book that may be bought
+     * @param bookCount refers to number of book that user want to buy
      * @return true - if add book successfully
      */
-    public boolean addBookToCart(Book book)
+    public boolean addBookToCart(Book book, int bookCount)
     {
-    	int remaining = book.getRemaining();
-		System.out.print("\nEnter number of book to buy(remaining " + remaining + ")");
-		int bookCount = IOUtils.checkInputMenu(0, remaining);
-    	
         try
         {
             selectedBooks.add(new Pair<>(book, bookCount));
