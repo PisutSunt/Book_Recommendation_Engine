@@ -183,8 +183,8 @@ public class HomePage
 					currentUser.getCart().showAllBooksInCart();
 					if (currentUser.getCart().getSelectedBooks().isEmpty())
 						break;
-					System.out.print("\nEnter number of book that you want to remove ('0' for cancel)> ");
 					ArrayList<Pair<Book, Integer>> list = currentUser.getCart().getSelectedBooks();
+					System.out.print("\nEnter number of book that you want to remove ('0' for cancel)> ");
 					int selBook = IOUtils.checkInputMenu(0, list.size());
 
 					if (selBook == 0)
